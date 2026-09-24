@@ -14,7 +14,7 @@
 <section class="card">
   <h2>Contact us</h2>
   <p>Spotted an error in a city's times, want your city added, or have feedback? We read everything.</p>
-  <p>Email us directly: <a href="mailto:hello@salahtime.com">hello@salahtime.com</a></p>
+  <p>Email us directly: <a href="mailto:hello@getsalahtime.com">hello@getsalahtime.com</a></p>
   <h3>Or use the form</h3>
   <form id="contact-form">
     <p><label>Your name<br><input type="text" name="name" required style="width:100%;max-width:420px"></label></p>
@@ -32,7 +32,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   var f = e.target;
   var subject = encodeURIComponent('SalahTime contact from ' + f.name.value);
   var body = encodeURIComponent(f.message.value + '\n\n— ' + f.name.value + ' (' + f.email.value + ')');
-  window.location.href = 'mailto:hello@salahtime.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:hello@getsalahtime.com?subject=' + subject + '&body=' + body;
 });
 </script>
 </body>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salahtime.com/sitemap.xml
+Sitemap: https://getsalahtime.com/sitemap.xml
