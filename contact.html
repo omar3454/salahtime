@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<header class="site-header"><div class="container"><a class="brand" href="/">SalahTime</a><span class="tagline">Accurate prayer times for the Muslim world</span><nav class="nav"><a href="/">Home</a><a href="/qibla.html">Qibla</a><a href="/hijri.html">Hijri Calendar</a><a href="/methods.html">Methods</a><a href="/cities/">Cities</a></nav></div></header>
+<header class="site-header"><div class="container"><a class="brand" href="/">SalahTime</a><span class="tagline">Accurate prayer times for the Muslim world</span><nav class="nav"><a href="/">Home</a><a href="/qibla.html">Qibla</a><a href="/hijri.html">Hijri Calendar</a><a href="/methods.html">Methods</a><a href="/cities/">Cities</a><a href="/newsletter.html">Newsletter</a></nav></div></header>
 <main class="container">
 <p class="breadcrumbs"><a href="/">Home</a> → Contact</p>
 <section class="card">
@@ -25,7 +25,7 @@
   </form>
 </section>
 </main>
-<footer class="site-footer"><div class="container"><nav class="nav"><a href="/about.html">About</a><a href="/contact.html" aria-current="page">Contact</a><a href="/privacy.html">Privacy</a><a href="/methods.html">Methods</a></nav><p>© 2026 SalahTime. Prayer times are calculated astronomically; please confirm with your local mosque.</p></div></footer>
+<footer class="site-footer"><div class="container"><nav class="nav"><a href="/about.html">About</a><a href="/contact.html" aria-current="page">Contact</a><a href="/privacy.html">Privacy</a><a href="/methods.html">Methods</a><a href="/newsletter.html">Newsletter</a></nav><p>© 2026 SalahTime. Prayer times are calculated astronomically; please confirm with your local mosque.</p></div></footer>
 <script>
 document.getElementById('contact-form').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -35,5 +35,24 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   window.location.href = 'mailto:hello@getsalahtime.com?subject=' + subject + '&body=' + body;
 });
 </script>
+<!-- Newsletter: slide-in popup (all pages) -->
+<aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="Subscribe to The SalahTime Letter" aria-hidden="true">
+  <button type="button" class="nl-close" aria-label="Close">×</button>
+  <h3>The SalahTime Letter</h3>
+  <p>Your city's weekly prayer times, a duaa, and Hijri highlights — one thoughtful email every Friday.</p>
+  <form data-nl-form="slidein" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">Subscribe free</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">You're on the list.</p>
+    <p>See you Friday, in shaa Allah.</p>
+  </div>
+  <div class="nl-soon" role="status">Subscriptions open with the launch of getsalahtime.com.</div>
+  <p class="nl-note">Free forever · Unsubscribe anytime</p>
+</aside>
+<script src="/assets/js/newsletter.js"></script>
 </body>
 </html>

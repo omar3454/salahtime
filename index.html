@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<header class="site-header"><div class="container"><a class="brand" href="/">SalahTime</a><span class="tagline">Accurate prayer times for the Muslim world</span><nav class="nav"><a href="/" aria-current="page">Home</a><a href="/qibla.html">Qibla</a><a href="/hijri.html">Hijri Calendar</a><a href="/methods.html">Methods</a><a href="/cities/">Cities</a></nav></div></header>
+<header class="site-header"><div class="container"><a class="brand" href="/">SalahTime</a><span class="tagline">Accurate prayer times for the Muslim world</span><nav class="nav"><a href="/" aria-current="page">Home</a><a href="/qibla.html">Qibla</a><a href="/hijri.html">Hijri Calendar</a><a href="/methods.html">Methods</a><a href="/cities/">Cities</a><a href="/newsletter.html">Newsletter</a></nav></div></header>
 <main class="container">
 
 <!-- ADSENSE: banner-top -->
@@ -86,6 +86,33 @@
   <p class="small" style="margin-bottom:0"><a href="/cities/">Browse all 140 cities →</a></p>
 </section>
 
+<section class="nl-panel">
+  <span class="nl-kicker">The SalahTime Letter</span>
+  <h2>Prayer times in your inbox, every Friday.</h2>
+  <p class="lead">Join the free weekly email: your city's prayer times for the week ahead, one duaa with its meaning, and the Hijri highlights worth knowing.</p>
+  <ul class="nl-points">
+    <li><span class="tick">✓</span> Weekly prayer times for your city</li>
+    <li><span class="tick">✓</span> Duaa of the week, with meaning</li>
+    <li><span class="tick">✓</span> Hijri dates &amp; occasion reminders</li>
+    <li><span class="tick">✓</span> One short reflection — no spam, ever</li>
+  </ul>
+  <form data-nl-form="homepage" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
+      <select data-nl-cities name="city" aria-label="Your city (optional)">
+        <option value="">Your city (optional)</option>
+      </select>
+      <button type="submit" class="btn btn-gold">Subscribe free</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">You're on the list. Welcome.</p>
+    <p>The next issue arrives Friday, in shaa Allah.</p>
+  </div>
+  <div class="nl-soon" role="status">Subscriptions open with the launch of getsalahtime.com — you're early, and that's a good thing.</div>
+  <p class="nl-note">Free forever. Unsubscribe in one click. <a href="/newsletter.html">Learn more →</a></p>
+</section>
+
 <section class="card seo-copy">
   <h2>Accurate prayer times, calculated for where you are</h2>
   <p>SalahTime gives you precise daily prayer times for 140 cities across the Muslim world — from Cairo, Mecca and Medina to Jakarta, Karachi, Istanbul, London and New York. Every schedule is computed in your browser using established astronomical formulas: the sun's declination and the equation of time determine Fajr at dawn, Dhuhr at solar noon, Asr by shadow length, Maghrib at sunset, and Isha after twilight.</p>
@@ -121,7 +148,7 @@
 </section>
 
 </main>
-<footer class="site-footer"><div class="container"><nav class="nav"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/methods.html">Methods</a></nav><p>© 2026 SalahTime. Prayer times are calculated astronomically; please confirm with your local mosque.</p></div></footer>
+<footer class="site-footer"><div class="container"><nav class="nav"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy</a><a href="/methods.html">Methods</a><a href="/newsletter.html">Newsletter</a></nav><p>© 2026 SalahTime. Prayer times are calculated astronomically; please confirm with your local mosque.</p></div></footer>
 <script src="/assets/js/praytimes.js"></script>
 <script src="/assets/js/app.js"></script>
 <script>
@@ -345,5 +372,24 @@
   else init();
 })();
 </script>
+<!-- Newsletter: slide-in popup (all pages) -->
+<aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="Subscribe to The SalahTime Letter" aria-hidden="true">
+  <button type="button" class="nl-close" aria-label="Close">×</button>
+  <h3>The SalahTime Letter</h3>
+  <p>Your city's weekly prayer times, a duaa, and Hijri highlights — one thoughtful email every Friday.</p>
+  <form data-nl-form="slidein" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">Subscribe free</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">You're on the list.</p>
+    <p>See you Friday, in shaa Allah.</p>
+  </div>
+  <div class="nl-soon" role="status">Subscriptions open with the launch of getsalahtime.com.</div>
+  <p class="nl-note">Free forever · Unsubscribe anytime</p>
+</aside>
+<script src="/assets/js/newsletter.js"></script>
 </body>
 </html>

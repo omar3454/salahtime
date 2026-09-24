@@ -387,3 +387,125 @@ table.data tbody tr:nth-child(even) td { background: #fffdf7; }
 .breadcrumbs a { color: var(--emerald-dark); }
 
 .seo-copy p { max-width: 72ch; }
+
+/* ---------- Newsletter ---------- */
+.nl-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #0a4f3b 0%, #0e6b4f 65%, #0c5f45 100%);
+  color: #fff;
+  padding: 30px 26px;
+  margin: 18px 0;
+  box-shadow: 0 6px 24px rgba(10, 79, 59, 0.25);
+}
+.nl-panel::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23c9a227' stroke-opacity='0.16'%3E%3Crect x='22' y='22' width='28' height='28'/%3E%3Crect x='22' y='22' width='28' height='28' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='3.5'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.nl-panel > * { position: relative; }
+.nl-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.nl-panel h2 { color: #fff; margin: 0 0 8px; font-size: 1.6rem; }
+.nl-panel p.lead { color: #e9f2ed; margin: 0 0 14px; max-width: 62ch; }
+.nl-points { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 8px; }
+@media (min-width: 720px) { .nl-points { grid-template-columns: 1fr 1fr; } }
+.nl-points li { display: flex; gap: 10px; align-items: flex-start; color: #f2f7f4; font-size: 0.95rem; }
+.nl-points .tick {
+  flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gold); color: #0a4f3b;
+  font-weight: 800; font-size: 0.8rem; line-height: 22px; text-align: center;
+}
+.nl-form { display: flex; flex-wrap: wrap; gap: 10px; }
+.nl-form input[type="email"] { flex: 2 1 220px; border: 0; }
+.nl-form select { flex: 1 1 160px; border: 0; }
+.btn-gold { background: var(--gold); border-color: #a8871f; color: #20302a; }
+.btn-gold:hover { background: #b8941f; color: #20302a; }
+.nl-note { font-size: 0.82rem; color: #cfe0d6; margin: 10px 0 0; }
+.nl-note a { color: #fff; }
+.nl-done { display: none; }
+.nl-done.show { display: block; }
+.nl-done .big { font-size: 1.2rem; font-weight: 800; color: #fff; margin: 0 0 6px; }
+.nl-done p { color: #e9f2ed; margin: 0; }
+.nl-soon {
+  display: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-top: 12px;
+}
+.nl-soon.show { display: block; }
+
+/* Slide-in popup */
+.nl-slidein {
+  position: fixed;
+  z-index: 80;
+  right: 18px; bottom: 18px;
+  width: min(370px, calc(100vw - 36px));
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(20, 40, 32, 0.22);
+  padding: 20px 20px 18px;
+  transform: translateY(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.4s ease, visibility 0s 0.5s;
+}
+.nl-slidein.show {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.4s ease;
+}
+.nl-slidein .nl-close {
+  position: absolute; top: 6px; right: 6px;
+  border: 0; background: transparent;
+  font-size: 1.4rem; line-height: 1;
+  color: var(--ink-soft); cursor: pointer; padding: 8px;
+}
+.nl-slidein .nl-close:hover { color: var(--ink); }
+.nl-slidein h3 { margin: 0 0 6px; color: var(--emerald-dark); font-size: 1.15rem; padding-right: 26px; }
+.nl-slidein p { margin: 0 0 12px; font-size: 0.92rem; color: var(--ink-soft); }
+.nl-slidein .nl-form input[type="email"] { flex: 1 1 100%; border: 1px solid var(--line); }
+.nl-slidein .nl-form .btn { flex: 1 1 100%; }
+.nl-slidein .nl-note { color: var(--ink-soft); }
+.nl-slidein .nl-done .big { color: var(--emerald-dark); }
+.nl-slidein .nl-done p { color: var(--ink-soft); }
+.nl-slidein .nl-soon { background: var(--gold-soft); border-color: var(--gold); color: var(--ink); }
+@media (max-width: 560px) {
+  .nl-slidein { left: 12px; right: 12px; bottom: 12px; width: auto; }
+}
+
+/* Sample duaa card */
+.duaa {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 16px 0;
+}
+.duaa .ar {
+  font-size: 1.6rem;
+  direction: rtl;
+  text-align: right;
+  color: var(--emerald-dark);
+  margin: 0 0 10px;
+  line-height: 2.1;
+}
+.duaa .tr { font-style: italic; color: var(--ink-soft); margin: 0 0 4px; }
+.duaa .en { margin: 0; font-weight: 600; color: var(--ink); }
+.duaa .src { font-size: 0.82rem; color: var(--ink-soft); margin: 8px 0 0; }
