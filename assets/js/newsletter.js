@@ -1,14 +1,14 @@
 /* SalahTime newsletter — signup forms + slide-in popup.
  *
- * HOW TO ACTIVATE: set NEWSLETTER_ENDPOINT to the subscribe URL of your
- * email provider (e.g. Brevo, Mailchimp). The provider expects a POST with
- * fields: email, city (optional), source (page id). Until the endpoint is
- * set, forms show a "launching soon" note instead of collecting addresses.
+ * Subscriptions POST directly to the Brevo signup form endpoint below
+ * (double opt-in: Brevo emails the subscriber a confirmation link).
+ * No API key is exposed: list targeting is encoded in the endpoint URL.
  */
 (function () {
   'use strict';
 
-  var NEWSLETTER_ENDPOINT = null; // <-- set when the email provider is connected
+  var NEWSLETTER_ENDPOINT = 'https://8173fdcd.sibforms.com/serve/MUIFAPVh_8WSRbRMptvgLUD2ncNFqEaU_hlwXQ2UV_PdSHd9Wkt9TTAThLWvcDwtyDKjovtePE0ZL6LDb7lJZ64eRvg9YpP8Rr4PGMczEJ9gtHE-9eTvNcc75FtCeAbU6V5MVUbNBUmGgvSUVwbszQgn0pQ3gg7VjyWiL0Yf-PmiSJPfFjYiGccAqF99CN0eQL-uUP9qaM8DRYo52w==';
+  var CITY_FIELD = 'CITY'; // Brevo contact attribute for the subscriber's city
 
   var LS_SUB = 'st_nl_subscribed';
   var LS_DISMISS = 'st_nl_dismissed';
@@ -80,17 +80,22 @@
         }
 
         btn.disabled = true;
-        var payload = {
-          email: addr,
-          city: citySel ? citySel.value : '',
-          source: form.getAttribute('data-nl-form') || 'site'
-        };
+
+        // Brevo signup form payload (field names from the form's embed code).
+        var body = new URLSearchParams();
+        body.append('EMAIL', addr);
+        if (citySel && citySel.value && CITY_FIELD) body.append(CITY_FIELD, citySel.value);
+        body.append('email_address_check', ''); // honeypot: must stay empty
+        body.append('locale', 'en');
+
+        // no-cors: sibforms doesn't allow reading the response cross-origin;
+        // a resolved promise means the subscription was accepted.
         fetch(NEWSLETTER_ENDPOINT, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(function (r) {
-          if (!r.ok) throw new Error('bad response');
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        }).then(function () {
           onSubscribed(form, doneBox);
         }).catch(function () {
           btn.disabled = false;
@@ -108,7 +113,7 @@
     form.style.display = 'none';
     if (doneBox) doneBox.classList.add('show');
     var slide = $('#nl-slidein');
-    if (slide) setTimeout(function () { slide.classList.remove('show'); }, 2500);
+    if (slide) setTimeout(function () { slide.classList.remove('show'); }, 4000);
   }
 
   /* ---- Slide-in popup ---- */
