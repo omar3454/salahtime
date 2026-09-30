@@ -1,0 +1,16 @@
+/* SalahTime print stylesheet — monthly timetables. Linked with media="print". */
+.site-header, .site-footer, .no-print, .ad-slot, .nl-slidein, .breadcrumb, .month-nav { display: none !important; }
+html, body { background: #fff !important; color: #000 !important; }
+.container { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+main.container { display: block !important; }
+a { color: #000 !important; text-decoration: none !important; }
+.card { box-shadow: none !important; border: 1px solid #999 !important; border-radius: 0 !important; margin: 0 0 10px !important; padding: 10px !important; }
+h1 { font-size: 20px !important; margin: 0 0 6px !important; color: #000 !important; }
+.lede, .method-note { font-size: 11px !important; color: #000 !important; margin: 4px 0 !important; }
+.times-table { font-size: 11px !important; width: 100% !important; margin: 6px 0 !important; }
+.times-table th, .times-table td { border: 1px solid #666 !important; padding: 3px 5px !important; color: #000 !important; }
+.times-table thead { display: table-header-group; }
+.times-table tr { page-break-inside: avoid; }
+.times-table tr.friday td { background: #eee !important; }
+.print-only { display: block !important; text-align: center; font-size: 11px; color: #000; margin-top: 8px; }
+@page { margin: 12mm; }

@@ -526,3 +526,11 @@ input, select, textarea, button { font-family: inherit; }
 .qibla-compass text { font-family: inherit; }
 .times-table thead th { text-transform: none; }
 .dir-word { font-weight: 700; }
+
+/* SalahTime monthly timetables */
+.monthly-links .month-list{list-style:none;margin:.6rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.45rem}
+.monthly-links .month-list a{display:block;padding:.55rem .8rem;border:1px solid #d8cfc0;border-radius:10px;text-decoration:none}
+.monthly-links .month-list a:hover{border-color:#c9a227}
+.month-nav{display:flex;justify-content:space-between;gap:1rem;margin:1rem 0;flex-wrap:wrap}
+.month-table tr.friday td{background:#fdf6e3}
+.print-only{display:none}
