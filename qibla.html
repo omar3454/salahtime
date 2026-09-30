@@ -66,12 +66,15 @@
   <p class="alert" id="compass-status">Checking for a compass sensor…</p>
   <div id="compass-fallback" style="display:none">
     <h3>No compass sensor? Do this instead</h3>
+    <p class="alert" id="fallback-direction"></p>
+    <p><a class="btn btn-primary" id="fallback-map" href="#" target="_blank" rel="noopener">See the line to Mecca on a map</a></p>
     <ol>
       <li>Find north with any compass app, the sun (rises in the east, sets in the west), or a landmark you know.</li>
       <li>Turn so that north is behind the top of the compass above.</li>
       <li>Face the direction of the gold arrow — that is your Qibla.</li>
       <li>Keep metal objects and magnets away from the phone for an accurate reading.</li>
     </ol>
+    <p class="small">Tip: in-app browsers (opened inside other apps) block the compass sensor. Open this page in Safari or Chrome for the live compass.</p>
   </div>
 </section>
 
@@ -93,10 +96,20 @@
   var el = function (id) { return document.getElementById(id); };
   var citySelect = el('city-select'), arrow = el('qibla-arrow');
 
+  var KAABA = { lat: 21.422487, lng: 39.826206 };
+  function bearingToWords(b) {
+    var dirs = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'];
+    return dirs[Math.round(b / 45) % 8];
+  }
+
   function render() {
     state.bearing = PT.qibla(state.city.lat, state.city.lng);
     el('qibla-deg').textContent = state.bearing.toFixed(1) + '°';
     el('qibla-city').textContent = state.city.name + ', ' + state.city.country;
+    el('fallback-direction').textContent = 'From ' + state.city.name + ', face ' + bearingToWords(state.bearing) +
+      ' — ' + state.bearing.toFixed(1) + '° clockwise from true north.';
+    el('fallback-map').href = 'https://www.google.com/maps/dir/?api=1&origin=' + state.city.lat + ',' + state.city.lng +
+      '&destination=' + KAABA.lat + ',' + KAABA.lng + '&travelmode=walking';
     el('qibla-dist').textContent = Math.round(App.distanceToKaabaKm(state.city.lat, state.city.lng))
       .toLocaleString('en') + ' km to the Kaaba';
     arrow.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 150 150)');
@@ -170,7 +183,7 @@
         btnAuto.style.display = 'none';
       });
     } else {
-      updateCompassStatus('No compass sensor found on this device — use the manual method below.', true);
+      updateCompassStatus('No live compass here — this browser does not expose the orientation sensor (common in in-app browsers). Your exact Qibla direction is below.', true);
       el('compass-fallback').style.display = 'block';
     }
   }
