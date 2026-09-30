@@ -1,0 +1,722 @@
+{
+ "cairo": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "alexandria": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "giza": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "luxor": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "aswan": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "port-said": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "suez": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "mansoura": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "tanta": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "sharm-el-sheikh": {
+  "tz": "Africa/Cairo",
+  "method": "EGYPT",
+  "region": "Middle East"
+ },
+ "mecca": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "medina": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "riyadh": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "jeddah": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "dammam": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "taif": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "abha": {
+  "tz": "Asia/Riyadh",
+  "method": "MAKKAH",
+  "region": "Middle East"
+ },
+ "dubai": {
+  "tz": "Asia/Dubai",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "abu-dhabi": {
+  "tz": "Asia/Dubai",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "sharjah": {
+  "tz": "Asia/Dubai",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "doha": {
+  "tz": "Asia/Qatar",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "kuwait-city": {
+  "tz": "Asia/Kuwait",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "manama": {
+  "tz": "Asia/Bahrain",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "muscat": {
+  "tz": "Asia/Muscat",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "salalah": {
+  "tz": "Asia/Muscat",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "sanaa": {
+  "tz": "Asia/Aden",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "aden": {
+  "tz": "Asia/Aden",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "amman": {
+  "tz": "Asia/Amman",
+  "method": "JORDAN",
+  "region": "Middle East"
+ },
+ "zarqa": {
+  "tz": "Asia/Amman",
+  "method": "JORDAN",
+  "region": "Middle East"
+ },
+ "jerusalem": {
+  "tz": "Asia/Hebron",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "gaza": {
+  "tz": "Asia/Gaza",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "beirut": {
+  "tz": "Asia/Beirut",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "tripoli-lebanon": {
+  "tz": "Asia/Beirut",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "damascus": {
+  "tz": "Asia/Damascus",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "aleppo": {
+  "tz": "Asia/Damascus",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "baghdad": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "basra": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "mosul": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "najaf": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "karbala": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "erbil": {
+  "tz": "Asia/Baghdad",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "istanbul": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "ankara": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "izmir": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "bursa": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "antalya": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "adana": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "konya": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "gaziantep": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "diyarbakir": {
+  "tz": "Europe/Istanbul",
+  "method": "TURKEY",
+  "region": "Middle East"
+ },
+ "tehran": {
+  "tz": "Asia/Tehran",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "mashhad": {
+  "tz": "Asia/Tehran",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "isfahan": {
+  "tz": "Asia/Tehran",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "shiraz": {
+  "tz": "Asia/Tehran",
+  "method": "MWL",
+  "region": "Middle East"
+ },
+ "casablanca": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "rabat": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "marrakech": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "fes": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "tangier": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "agadir": {
+  "tz": "Africa/Casablanca",
+  "method": "MOROCCO",
+  "region": "North Africa"
+ },
+ "algiers": {
+  "tz": "Africa/Algiers",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "oran": {
+  "tz": "Africa/Algiers",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "constantine": {
+  "tz": "Africa/Algiers",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "tunis": {
+  "tz": "Africa/Tunis",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "sfax": {
+  "tz": "Africa/Tunis",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "sousse": {
+  "tz": "Africa/Tunis",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "tripoli-libya": {
+  "tz": "Africa/Tripoli",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "benghazi": {
+  "tz": "Africa/Tripoli",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "nouakchott": {
+  "tz": "Africa/Nouakchott",
+  "method": "MWL",
+  "region": "North Africa"
+ },
+ "dakar": {
+  "tz": "Africa/Dakar",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "bamako": {
+  "tz": "Africa/Bamako",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "niamey": {
+  "tz": "Africa/Niamey",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "lagos": {
+  "tz": "Africa/Lagos",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "abuja": {
+  "tz": "Africa/Lagos",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "kano": {
+  "tz": "Africa/Lagos",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "kaduna": {
+  "tz": "Africa/Lagos",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "ndjamena": {
+  "tz": "Africa/Ndjamena",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "khartoum": {
+  "tz": "Africa/Khartoum",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "omdurman": {
+  "tz": "Africa/Khartoum",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "port-sudan": {
+  "tz": "Africa/Khartoum",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "mogadishu": {
+  "tz": "Africa/Mogadishu",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "djibouti-city": {
+  "tz": "Africa/Djibouti",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "addis-ababa": {
+  "tz": "Africa/Addis_Ababa",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "nairobi": {
+  "tz": "Africa/Nairobi",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "mombasa": {
+  "tz": "Africa/Nairobi",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "dar-es-salaam": {
+  "tz": "Africa/Dar_es_Salaam",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "zanzibar": {
+  "tz": "Africa/Dar_es_Salaam",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "kampala": {
+  "tz": "Africa/Kampala",
+  "method": "MWL",
+  "region": "Sub-Saharan Africa"
+ },
+ "karachi": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "lahore": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "islamabad": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "faisalabad": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "peshawar": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "multan": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "rawalpindi": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "hyderabad-pakistan": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "quetta": {
+  "tz": "Asia/Karachi",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "delhi": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "mumbai": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "hyderabad-india": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "lucknow": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "kolkata": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "bangalore": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "chennai": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "ahmedabad": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "srinagar": {
+  "tz": "Asia/Kolkata",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "dhaka": {
+  "tz": "Asia/Dhaka",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "chittagong": {
+  "tz": "Asia/Dhaka",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "sylhet": {
+  "tz": "Asia/Dhaka",
+  "method": "KARACHI",
+  "region": "South Asia"
+ },
+ "kabul": {
+  "tz": "Asia/Kabul",
+  "method": "MWL",
+  "region": "South Asia"
+ },
+ "kandahar": {
+  "tz": "Asia/Kabul",
+  "method": "MWL",
+  "region": "South Asia"
+ },
+ "herat": {
+  "tz": "Asia/Kabul",
+  "method": "MWL",
+  "region": "South Asia"
+ },
+ "jakarta": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "surabaya": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "bandung": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "medan": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "semarang": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "makassar": {
+  "tz": "Asia/Makassar",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "yogyakarta": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "palembang": {
+  "tz": "Asia/Jakarta",
+  "method": "KEMENAG",
+  "region": "Southeast Asia"
+ },
+ "kuala-lumpur": {
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "JAKIM",
+  "region": "Southeast Asia"
+ },
+ "johor-bahru": {
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "JAKIM",
+  "region": "Southeast Asia"
+ },
+ "penang": {
+  "tz": "Asia/Kuala_Lumpur",
+  "method": "JAKIM",
+  "region": "Southeast Asia"
+ },
+ "singapore": {
+  "tz": "Asia/Singapore",
+  "method": "MWL",
+  "region": "Southeast Asia"
+ },
+ "bandar-seri-begawan": {
+  "tz": "Asia/Brunei",
+  "method": "MWL",
+  "region": "Southeast Asia"
+ },
+ "male": {
+  "tz": "Indian/Maldives",
+  "method": "MWL",
+  "region": "Southeast Asia"
+ },
+ "tashkent": {
+  "tz": "Asia/Tashkent",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "samarkand": {
+  "tz": "Asia/Samarkand",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "almaty": {
+  "tz": "Asia/Almaty",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "astana": {
+  "tz": "Asia/Almaty",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "bishkek": {
+  "tz": "Asia/Bishkek",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "dushanbe": {
+  "tz": "Asia/Dushanbe",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "ashgabat": {
+  "tz": "Asia/Ashgabat",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "baku": {
+  "tz": "Asia/Baku",
+  "method": "MWL",
+  "region": "Central Asia"
+ },
+ "sarajevo": {
+  "tz": "Europe/Sarajevo",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "tirana": {
+  "tz": "Europe/Tirane",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "pristina": {
+  "tz": "Europe/Belgrade",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "skopje": {
+  "tz": "Europe/Skopje",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "london": {
+  "tz": "Europe/London",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "paris": {
+  "tz": "Europe/Paris",
+  "method": "FRANCE",
+  "region": "Europe"
+ },
+ "berlin": {
+  "tz": "Europe/Berlin",
+  "method": "MWL",
+  "region": "Europe"
+ },
+ "new-york": {
+  "tz": "America/New_York",
+  "method": "ISNA",
+  "region": "Americas & Oceania"
+ },
+ "toronto": {
+  "tz": "America/Toronto",
+  "method": "ISNA",
+  "region": "Americas & Oceania"
+ },
+ "sydney": {
+  "tz": "Australia/Sydney",
+  "method": "MWL",
+  "region": "Americas & Oceania"
+ }
+}

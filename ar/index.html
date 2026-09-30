@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VZK88PBTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7VZK88PBTP');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مواقيت الصلاة اليوم — مواقيت صلاة دقيقة | SalahTime</title>
+<meta name="description" content="مواقيت صلاة يومية دقيقة للقاهرة و144 مدينة حول العالم. الفجر والظهر والعصر والمغرب والعشاء محسوبة فلكيًا بطريقة الهيئة المصرية العامة للمساحة. مجاني، بدون تسجيل.">
+<link rel="canonical" href="https://getsalahtime.com/ar/">
+<link rel="stylesheet" href="/ar/assets/css/style-ar.css">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/">
+</head>
+<body>
+<header class="site-header"><div class="container"><a class="brand" href="/ar/">SalahTime</a><span class="tagline">مواقيت صلاة دقيقة للعالم الإسلامي</span><nav class="nav"><a href="/ar/" aria-current="page">الرئيسية</a><a href="/ar/qibla.html">القبلة</a><a href="/ar/hijri.html">التقويم الهجري</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/cities/">المدن</a><a href="/ar/newsletter.html">النشرة البريدية</a><span class="lang-switch"><a href="/">EN</a> | عربي</span></nav></div></header>
+<main class="container">
+
+<!-- ADSENSE: banner-top -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+<section class="hero">
+  <h1>مواقيت الصلاة</h1>
+  <p class="hijri-line" id="hijri-date">…</p>
+  <p class="greg-line" id="greg-date"></p>
+  <div class="location-controls">
+    <button type="button" class="btn btn-primary" id="btn-geo">استخدم موقعي</button>
+    <select id="city-select" aria-label="اختر مدينة"></select>
+  </div>
+  <div class="search-wrap">
+    <input type="search" id="city-search" placeholder="ابحث في 144 مدينة…" autocomplete="off" aria-label="ابحث عن المدن">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</section>
+
+<section class="card" aria-live="polite">
+  <h2 id="times-title">مواقيت الصلاة في القاهرة، مصر</h2>
+  <p class="countdown-big" id="next-prayer">جارٍ التحميل…</p>
+  <div class="wrap-scroll">
+  <table class="times-table">
+    <thead><tr><th scope="col">الصلاة</th><th scope="col">الوقت</th></tr></thead>
+    <tbody id="times-body"></tbody>
+  </table>
+  </div>
+  <div class="method-controls">
+    <label>طريقة الحساب
+      <select id="method-select" aria-label="طريقة الحساب"></select>
+    </label>
+    <label>إعداد العصر الفقهي
+      <select id="asr-select" aria-label="إعداد العصر الفقهي">
+        <option value="Standard">قياسي (الشافعية والمالكية والحنابلة)</option>
+        <option value="Hanafi">حنفي</option>
+      </select>
+    </label>
+  </div>
+  <p class="alert" id="times-note" style="margin-top:14px"></p>
+</section>
+
+<!-- ADSENSE: in-article -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+<div class="grid">
+  <section class="card">
+    <h2>العد التنازلي لرمضان والعيد</h2>
+    <ul class="holy-list" id="holy-countdowns"></ul>
+    <p class="small muted" style="margin-bottom:0">تتبع التواريخ تقويم أم القرى وقد تختلف بيوم عن إعلانات رؤية الهلال المحلية.</p>
+  </section>
+  <section class="card">
+    <h2>اعرف اتجاه قبلتك</h2>
+    <p>استقبل الكعبة في مكة أينما كنت. اعرف اتجاه قبلتك الدقيق بالدرجات، والمسافة إلى الكعبة، مع بوصلة حية.</p>
+    <p><a class="btn btn-primary" href="/ar/qibla.html">افتح باحث القبلة</a></p>
+  </section>
+</div>
+
+<section class="card">
+  <h2>مدن رائجة</h2>
+  <ul class="city-links">
+    <li><a href="/ar/cities/cairo.html">القاهرة</a></li>
+    <li><a href="/ar/cities/mecca.html">مكة المكرمة</a></li>
+    <li><a href="/ar/cities/medina.html">المدينة المنورة</a></li>
+    <li><a href="/ar/cities/dubai.html">دبي</a></li>
+    <li><a href="/ar/cities/istanbul.html">إسطنبول</a></li>
+    <li><a href="/ar/cities/jakarta.html">جاكرتا</a></li>
+    <li><a href="/ar/cities/karachi.html">كراتشي</a></li>
+    <li><a href="/ar/cities/kuala-lumpur.html">كوالالمبور</a></li>
+    <li><a href="/ar/cities/london.html">لندن</a></li>
+    <li><a href="/ar/cities/new-york.html">نيويورك</a></li>
+    <li><a href="/ar/cities/dhaka.html">دكا</a></li>
+    <li><a href="/ar/cities/riyadh.html">الرياض</a></li>
+  </ul>
+  <p class="small" style="margin-bottom:0"><a href="/ar/cities/">تصفح كل المدن الـ144 ←</a></p>
+</section>
+
+<section class="nl-panel">
+  <span class="nl-kicker">رسالة SalahTime</span>
+  <h2>مواقيت الصلاة في بريدك، كل جمعة.</h2>
+  <p class="lead">انضم إلى الرسالة الأسبوعية المجانية: مواقيت الصلاة لمدينتك للأسبوع القادم، ودعاء مع معناه، وأبرز الأحداث الهجرية.</p>
+  <ul class="nl-points">
+    <li><span class="tick">✓</span> مواقيت الصلاة الأسبوعية لمدينتك</li>
+    <li><span class="tick">✓</span> دعاء الأسبوع مع معناه</li>
+    <li><span class="tick">✓</span> التواريخ الهجرية وتذكيرات المناسبات</li>
+    <li><span class="tick">✓</span> وقفة قصيرة — بلا بريد مزعج أبدًا</li>
+  </ul>
+  <form data-nl-form="homepage" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
+      <select data-nl-cities name="city" aria-label="مدينتك (اختياري)">
+        <option value="">مدينتك (اختياري)</option>
+      </select>
+      <button type="submit" class="btn btn-gold">اشترك مجانًا</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p>انقر رابط التفعيل الذي أرسلناه إليك لتفعيل اشتراكك.</p>
+  </div>
+  <div class="nl-soon" role="status">يُفتتح الاشتراك مع إطلاق getsalahtime.com — وصلت مبكرًا، وهذا أمر جيد.</div>
+  <p class="nl-note">مجاني للأبد. إلغاء الاشتراك بنقرة واحدة. <a href="/ar/newsletter.html">اعرف المزيد ←</a></p>
+</section>
+
+<section class="card seo-copy">
+  <h2>مواقيت صلاة دقيقة، محسوبة لمكانك</h2>
+  <p>يمنحك SalahTime مواقيت صلاة يومية دقيقة لـ144 مدينة في العالم الإسلامي — من القاهرة ومكة والمدينة إلى جاكرتا وكراتشي وإسطنبول ولندن ونيويورك. يُحسب كل جدول في متصفحك بصيغ فلكية معتمدة: ميل الشمس ومعادلة الزمن يحددان الفجر عند الفجر الصادق، والظهر عند زوال الشمس، والعصر بطول الظل، والمغرب عند الغروب، والعشاء بعد الشفق.</p>
+  <p>يمكنك التبديل بين إحدى عشرة طريقة حساب تستخدمها الجهات الدينية حول العالم، منها الهيئة المصرية العامة للمساحة، ورابطة العالم الإسلامي، وأم القرى بمكة، وإسنا، وكراتشي، ووزارة الشؤون الدينية الإندونيسية، وجاكيم الماليزية، والمغرب، والأردن، وديانت التركية، واتحاد المنظمات الإسلامية في فرنسا. اختر العصر القياسي أو الحنفي حسب مذهبك.</p>
+  <p>تم التحقق من محرك الحساب لدينا مقابل Aladhan API بانحراف أقصى دقيقتين فقط عبر 23 فحصًا للمدن والتواريخ والطرق. تُعرض المواقيت بتوقيت مدينتك المحلي، وتعمل دون إنترنت بعد تحميلها، وهي مجانية تمامًا — بلا حساب ولا تسجيل ولا تتبع.</p>
+</section>
+
+<!-- ADSENSE: sidebar/bottom -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+<section class="card faq">
+  <h2>الأسئلة الشائعة</h2>
+  <details>
+    <summary>ما مدى دقة مواقيت الصلاة؟</summary>
+    <p>تُحسب المواقيت بفلك مواقع الشمس القياسي وتم التحقق منها مقابل Aladhan API — وكان أقصى انحراف دقيقتين عبر 23 فحصًا للمدن والتواريخ والطرق. ومع ذلك يُرجى التأكد مع مسجدك المحلي، فقد تضيف المساجد دقائق احتياطية.</p>
+  </details>
+  <details>
+    <summary>أي طريقة حساب يجب أن أختار؟</summary>
+    <p>استخدم طريقة الجهة الدينية في بلدك: الهيئة المصرية العامة للمساحة لمصر، وأم القرى للسعودية، وديانت لتركيا، وهكذا. يختار SalahTime الافتراضي الصحيح تلقائيًا لكل مدينة؛ ويمكنك تغييره في أي وقت.</p>
+  </details>
+  <details>
+    <summary>هل يعمل SalahTime دون إنترنت؟</summary>
+    <p>نعم. تُحسب مواقيت الصلاة بالكامل في متصفحك دون أي طلبات لخوادم، فبعد تحميل الصفحة تستمر في العمل دون اتصال بالإنترنت.</p>
+  </details>
+  <details>
+    <summary>هل SalahTime مجاني؟</summary>
+    <p>نعم — مجاني تمامًا، بلا حساب وبلا تسجيل. الموقع مدعوم بالإعلانات.</p>
+  </details>
+  <details>
+    <summary>كيف تُحسب المواقيت؟</summary>
+    <p>من ميل الشمس ومعادلة الزمن لموقعك وتاريخك: الفجر والعشاء بزاويتي شفق ثابتتين (أو دقائق بعد المغرب لطريقة مكة)، والشروق/الغروب عند 0.833° تحت الأفق، والظهر عند زوال الشمس، والعصر من طول الظل. تستخدم المواقع ذات خطوط العرض العالية تعديلات ليلية زاوية. انظر صفحة <a href="/ar/methods.html">طرق الحساب</a> للتفاصيل الكاملة.</p>
+  </details>
+</section>
+
+</main>
+<footer class="site-footer"><div class="container"><nav class="nav"><a href="/ar/about.html">عن الموقع</a><a href="/ar/contact.html">اتصل بنا</a><a href="/ar/privacy.html">الخصوصية</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/newsletter.html">النشرة البريدية</a></nav><p>© 2026 SalahTime. تُحسب مواقيت الصلاة فلكيًا؛ يُرجى التأكد من مسجدك المحلي.</p></div></footer>
+<script src="/ar/assets/js/praytimes.js"></script>
+<script src="/ar/assets/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var App = window.SalahTimeApp;
+  var PT = window.PrayTimes;
+
+  var CAIRO = { name: 'القاهرة', country: 'مصر', slug: 'cairo', lat: 30.0444, lng: 31.2357 };
+  var state = {
+    city: CAIRO, tz: 'Africa/Cairo', method: 'EGYPT', asr: 'Standard',
+    cities: [], meta: {}
+  };
+
+  var el = function (id) { return document.getElementById(id); };
+  var timesTitle = el('times-title'), timesBody = el('times-body'),
+      nextPrayer = el('next-prayer'), timesNote = el('times-note'),
+      citySelect = el('city-select'), methodSelect = el('method-select'),
+      asrSelect = el('asr-select');
+
+  var PRAYERS = [
+    ['imsak', 'الإمساك'], ['fajr', 'الفجر'], ['sunrise', 'الشروق'],
+    ['dhuhr', 'الظهر'], ['asr', 'العصر'], ['maghrib', 'المغرب'], ['isha', 'العشاء']
+  ];
+
+  function todayParts() {
+    var n = new Date();
+    return { y: n.getFullYear(), m: n.getMonth() + 1, d: n.getDate() };
+  }
+
+  function computeFor(y, m, d) {
+    return PT.computeDay({
+      lat: state.city.lat, lng: state.city.lng, tz: state.tz,
+      y: y, m: m, d: d, method: state.method, asr: state.asr
+    });
+  }
+
+  function prayerDate(y, m, d, hourFloat) {
+    if (isNaN(hourFloat)) return null;
+    return App.zonedTimeToDate(state.tz, y, m, d, hourFloat);
+  }
+
+  function renderTimes() {
+    var t = todayParts();
+    var times = computeFor(t.y, t.m, t.d);
+    var now = new Date();
+    var rows = PRAYERS.map(function (p) {
+      var dt = prayerDate(t.y, t.m, t.d, times[p[0]]);
+      return { key: p[0], label: p[1], str: PT.fmt(times[p[0]]), date: dt };
+    });
+    // next upcoming prayer today (including sunrise)
+    var next = null;
+    rows.forEach(function (r) { if (!next && r.date && r.date > now) next = r; });
+
+    timesTitle.textContent = 'مواقيت الصلاة في ' + state.city.name + '، ' + state.city.country;
+    timesBody.innerHTML = '';
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      if (next && r.key === next.key) tr.className = 'next';
+      var td1 = document.createElement('td'); td1.textContent = r.label;
+      var td2 = document.createElement('td'); td2.className = 'time'; td2.textContent = r.str;
+      tr.appendChild(td1); tr.appendChild(td2);
+      timesBody.appendChild(tr);
+    });
+
+    var methodName = (PT.METHODS[state.method] || {}).name || state.method;
+    timesNote.textContent = 'حُسبت بطريقة ' + methodName + '، والعصر: ' +
+      (state.asr === 'Hanafi' ? 'حنفي' : 'قياسي (الشافعية والمالكية والحنابلة)') +
+      '. الإمساك قبل الفجر بعشر دقائق. المواقيت بتوقيت ' + state.city.name + ' المحلي.';
+    scheduleCountdown();
+  }
+
+  var countdownTimer = null;
+  function scheduleCountdown() {
+    if (countdownTimer) clearInterval(countdownTimer);
+    updateCountdown();
+    countdownTimer = setInterval(updateCountdown, 1000);
+  }
+
+  function updateCountdown() {
+    var t = todayParts();
+    var times = computeFor(t.y, t.m, t.d);
+    var now = new Date();
+    var upcoming = [];
+    PRAYERS.forEach(function (p) {
+      var dt = prayerDate(t.y, t.m, t.d, times[p[0]]);
+      if (dt) upcoming.push({ label: p[1], date: dt, str: PT.fmt(times[p[0]]) });
+    });
+    // tomorrow's Fajr as fallback after Isha
+    var tm = new Date(t.y, t.m - 1, t.d + 1);
+    var tmr = computeFor(tm.getFullYear(), tm.getMonth() + 1, tm.getDate());
+    var fajrTmr = prayerDate(tm.getFullYear(), tm.getMonth() + 1, tm.getDate(), tmr.fajr);
+    if (fajrTmr) upcoming.push({ label: 'Fajr', date: fajrTmr, str: PT.fmt(tmr.fajr), tomorrow: true });
+
+    var next = null;
+    upcoming.forEach(function (u) { if (!next && u.date > now) next = u; });
+    if (!next) { nextPrayer.textContent = '—'; return; }
+    var diff = Math.max(0, next.date - now);
+    var h = Math.floor(diff / 3600000),
+        m = Math.floor(diff % 3600000 / 60000),
+        s = Math.floor(diff % 60000 / 1000);
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    nextPrayer.innerHTML = '';
+    var strong = document.createElement('strong'); strong.textContent = next.label;
+    nextPrayer.appendChild(strong);
+    nextPrayer.appendChild(document.createTextNode(' خلال ' + h + ' س ' + pad(m) + ' د ' + pad(s) + ' ث'));
+    var sub = document.createElement('span'); sub.className = 'sub';
+    sub.textContent = 'الساعة ' + next.str + (next.tomorrow ? ' غدًا' : '') + ' \u2022 ' + state.city.name;
+    nextPrayer.appendChild(sub);
+  }
+
+  function setCity(city, tz, method) {
+    state.city = city;
+    state.tz = tz || state.tz;
+    if (method) { state.method = method; methodSelect.value = method; }
+    citySelect.value = city.slug;
+    renderTimes();
+    try {
+      localStorage.setItem('salahtime', JSON.stringify({ slug: city.slug, method: state.method, asr: state.asr }));
+    } catch (e) {}
+  }
+
+  function init() {
+    el('hijri-date').textContent = App.islamicSupported() ? App.formatHijri(new Date()) : '';
+    el('greg-date').textContent = App.formatGregorian(new Date());
+
+    // holy-day countdowns
+    var holy = el('holy-countdowns');
+    App.holyDaysCountdowns().forEach(function (h) {
+      var li = document.createElement('li');
+      var name = document.createElement('span');
+      name.innerHTML = '<strong></strong> <span class="muted small"></span>';
+      name.querySelector('strong').textContent = h.name;
+      name.querySelector('.muted').textContent = h.arabic + (h.next ? ' ' + h.next.hijriYear + ' AH' : '');
+      var days = document.createElement('span'); days.className = 'days';
+      days.textContent = h.next ? App.daysAwayText(h.next.daysAway) : '—';
+      li.appendChild(name); li.appendChild(days);
+      holy.appendChild(li);
+    });
+
+    Promise.all([App.loadCities().catch(function () { return []; }),
+                 App.loadCityMeta().catch(function () { return {}; })])
+      .then(function (res) {
+        state.cities = res[0]; state.meta = res[1];
+        // city dropdown, grouped by region
+        var groups = {};
+        state.cities.forEach(function (c) {
+          var meta = state.meta[c.slug] || {};
+          var region = meta.region || 'Other';
+          (groups[region] = groups[region] || []).push({ c: c, meta: meta });
+        });
+        Object.keys(groups).sort().forEach(function (region) {
+          var og = document.createElement('optgroup'); og.label = region;
+          groups[region].forEach(function (g) {
+            var o = document.createElement('option');
+            o.value = g.c.slug; o.textContent = g.c.name + ', ' + g.c.country;
+            og.appendChild(o);
+          });
+          citySelect.appendChild(og);
+        });
+        // method dropdown
+        Object.keys(PT.METHODS).forEach(function (k) {
+          var o = document.createElement('option');
+          o.value = k; o.textContent = PT.METHODS[k].name;
+          methodSelect.appendChild(o);
+        });
+        methodSelect.value = state.method;
+        asrSelect.value = state.asr;
+        // restore saved preference
+        try {
+          var saved = JSON.parse(localStorage.getItem('salahtime') || 'null');
+          if (saved && saved.slug && state.meta[saved.slug]) {
+            var c = state.cities.filter(function (x) { return x.slug === saved.slug; })[0];
+            if (c) { state.asr = saved.asr === 'Hanafi' ? 'Hanafi' : 'Standard'; asrSelect.value = state.asr; setCity(c, state.meta[saved.slug].tz, saved.method || state.meta[saved.slug].method); }
+          }
+        } catch (e) {}
+        citySelect.value = state.city.slug;
+        App.setupSearch(el('city-search'), el('search-results'), state.cities);
+        renderTimes();
+      });
+
+    citySelect.addEventListener('change', function () {
+      var c = state.cities.filter(function (x) { return x.slug === citySelect.value; })[0];
+      if (!c) return;
+      var meta = state.meta[c.slug] || {};
+      setCity(c, meta.tz, meta.method);
+    });
+    methodSelect.addEventListener('change', function () {
+      state.method = methodSelect.value; renderTimes(); persist();
+    });
+    asrSelect.addEventListener('change', function () {
+      state.asr = asrSelect.value; renderTimes(); persist();
+    });
+    el('btn-geo').addEventListener('click', function () {
+      if (!navigator.geolocation) { timesNote.textContent = 'المتصفح لا يدعم تحديد الموقع — يُرجى اختيار مدينة من القائمة.'; timesNote.className = 'alert error'; return; }
+      el('btn-geo').disabled = true;
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        el('btn-geo').disabled = false;
+        var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, state.cities);
+        if (!hit) return;
+        var meta = state.meta[hit.city.slug] || {};
+        var tz = meta.tz || (Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || state.tz;
+        setCity(hit.city, tz, meta.method);
+        timesNote.textContent = 'تُعرض مواقيت أقرب مدينة: ' + hit.city.name + ' (على بُعد ' + Math.round(hit.km) + ' كم). ' + timesNote.textContent;
+        timesNote.className = 'alert';
+      }, function () {
+        el('btn-geo').disabled = false;
+        timesNote.textContent = 'الموقع غير متاح — يُرجى اختيار مدينة من القائمة.';
+        timesNote.className = 'alert error';
+      }, { timeout: 10000 });
+    });
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem('salahtime', JSON.stringify({ slug: state.city.slug, method: state.method, asr: state.asr }));
+    } catch (e) {}
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<!-- Newsletter: slide-in popup (all pages) -->
+<aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="اشترك في رسالة SalahTime" aria-hidden="true">
+  <button type="button" class="nl-close" aria-label="إغلاق">×</button>
+  <h3>رسالة SalahTime</h3>
+  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية — رسالة مدروسة كل يوم جمعة.</p>
+  <form data-nl-form="slidein" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">اشترك مجانًا</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p>انقر رابط التفعيل لتفعيل اشتراكك.</p>
+  </div>
+  <div class="nl-soon" role="status">يُفتتح الاشتراك مع إطلاق getsalahtime.com.</div>
+  <p class="nl-note">مجاني للأبد · إلغاء الاشتراك في أي وقت</p>
+</aside>
+<script src="/ar/assets/js/newsletter.js"></script>
+</body>
+</html>

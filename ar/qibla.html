@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VZK88PBTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7VZK88PBTP');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qibla Finder — Qibla Direction &amp; Compass | SalahTime</title>
+<meta name="description" content="Find your exact Qibla direction: bearing in degrees from true north, distance to the Kaaba in Mecca, and a live compass that points you toward prayer.">
+<link rel="canonical" href="https://getsalahtime.com/ar/qibla.html">
+<link rel="stylesheet" href="/ar/assets/css/style-ar.css">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/qibla.html">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/qibla.html">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/qibla.html">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/qibla.html">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/qibla.html">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/qibla.html">
+</head>
+<body>
+<header class="site-header"><div class="container"><a class="brand" href="/ar/">SalahTime</a><span class="tagline">مواقيت صلاة دقيقة للعالم الإسلامي</span><nav class="nav"><a href="/ar/">الرئيسية</a><a href="/ar/qibla.html" aria-current="page">القبلة</a><a href="/ar/hijri.html">التقويم الهجري</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/cities/">المدن</a><a href="/ar/newsletter.html">النشرة البريدية</a><span class="lang-switch"><a href="/qibla.html">EN</a> | عربي</span></nav></div></header>
+<main class="container">
+<p class="breadcrumbs"><a href="/ar/">الرئيسية</a> ← باحث القبلة</p>
+
+<!-- ADSENSE: banner-top -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+<section class="card">
+  <h2>محدد القبلة</h2>
+  <p>القبلة هي اتجاه الكعبة في مكة الذي يستقبله المسلمون في الصلاة. اختر مدينتك أو استخدم موقعك لمعرفة الاتجاه الدقيق.</p>
+  <div class="location-controls" style="justify-content:flex-start">
+    <button type="button" class="btn btn-primary" id="btn-geo">استخدم موقعي</button>
+    <select id="city-select" aria-label="اختر مدينة"></select>
+  </div>
+  <div class="qibla-readout">
+    <div class="degrees" id="qibla-deg">—</div>
+    <p><strong id="qibla-city">القاهرة، مصر</strong></p>
+    <p class="dist" id="qibla-dist"></p>
+  </div>
+  <svg class="qibla-compass" viewBox="0 0 300 300" role="img" aria-label="بوصلة القبلة">
+    <circle cx="150" cy="150" r="140" fill="#faf8f2" stroke="#0e6b4f" stroke-width="4"/>
+    <circle cx="150" cy="150" r="110" fill="none" stroke="#e3ddd0" stroke-width="1"/>
+    <g id="ticks" font-family="inherit" font-size="18" font-weight="700" text-anchor="middle">
+      <text x="150" y="34" fill="#0e6b4f">ش</text>
+      <text x="270" y="157" fill="#43564f">ق</text>
+      <text x="150" y="282" fill="#43564f">ج</text>
+      <text x="30" y="157" fill="#43564f">غ</text>
+    </g>
+    <g id="qibla-arrow">
+      <polygon points="150,34 138,110 150,98 162,110" fill="#c9a227" stroke="#8a6f1a" stroke-width="1.5"/>
+      <polygon points="150,266 142,210 150,220 158,210" fill="#9db3a9"/>
+      <line x1="150" y1="110" x2="150" y2="210" stroke="#c9a227" stroke-width="3"/>
+    </g>
+    <circle cx="150" cy="150" r="12" fill="#0e6b4f"/>
+    <circle cx="150" cy="150" r="5" fill="#faf8f2"/>
+  </svg>
+  <p class="center small muted">السهم الذهبي يشير إلى القبلة (الشمال إلى الأعلى).</p>
+</section>
+
+<section class="card">
+  <h2>البوصلة المباشرة</h2>
+  <p class="small">وجّه هاتفك وسيتبع السهم القبلة أثناء دورانك. يستخدم هذا مستشعر اتجاه جهازك.</p>
+  <p id="compass-controls">
+    <button type="button" class="btn btn-primary" id="btn-compass" style="display:none">فعّل البوصلة الحية</button>
+    <button type="button" class="btn" id="btn-compass-auto" style="display:none">ابدأ البوصلة الحية</button>
+  </p>
+  <p class="alert" id="compass-status">جارٍ البحث عن مستشعر بوصلة…</p>
+  <div id="compass-fallback" style="display:none">
+    <h3>لا يوجد مستشعر بوصلة؟ افعل هذا بدلًا من ذلك</h3>
+    <ol>
+      <li>حدد الشمال بأي تطبيق بوصلة، أو بالشمس (تشرق من الشرق وتغرب من الغرب)، أو بمعلم تعرفه.</li>
+      <li>استدر بحيث يكون الشمال خلف أعلى البوصلة أعلاه.</li>
+      <li>استقبل اتجاه السهم الذهبي — هذه قبلتك.</li>
+      <li>أبعد الأجسام المعدنية والمغناطيس عن الهاتف لقراءة دقيقة.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ADSENSE: sidebar/bottom -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+</main>
+<footer class="site-footer"><div class="container"><nav class="nav"><a href="/ar/about.html">عن الموقع</a><a href="/ar/contact.html">اتصل بنا</a><a href="/ar/privacy.html">الخصوصية</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/newsletter.html">النشرة البريدية</a></nav><p>© 2026 SalahTime. تُحسب مواقيت الصلاة فلكيًا؛ يُرجى التأكد من مسجدك المحلي.</p></div></footer>
+<script src="/ar/assets/js/praytimes.js"></script>
+<script src="/ar/assets/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var App = window.SalahTimeApp;
+  var PT = window.PrayTimes;
+  var CAIRO = { name: 'القاهرة', country: 'مصر', slug: 'cairo', lat: 30.0444, lng: 31.2357 };
+
+  var state = { city: CAIRO, bearing: PT.qibla(CAIRO.lat, CAIRO.lng) };
+  var el = function (id) { return document.getElementById(id); };
+  var citySelect = el('city-select'), arrow = el('qibla-arrow');
+
+  function render() {
+    state.bearing = PT.qibla(state.city.lat, state.city.lng);
+    el('qibla-deg').textContent = state.bearing.toFixed(1) + '°';
+    el('qibla-city').textContent = state.city.name + '، ' + state.city.country;
+    el('qibla-dist').textContent = Math.round(App.distanceToKaabaKm(state.city.lat, state.city.lng))
+      .toLocaleString('ar-u-nu-latn') + ' كم إلى الكعبة';
+    arrow.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 150 150)');
+    if (!live.active) updateCompassStatus('البوصلة ثابتة — الشمال للأعلى. السهم الذهبي يوضح اتجاه القبلة: ' + state.bearing.toFixed(1) + '°.');
+  }
+
+  var live = { active: false, heading: null, timer: null };
+
+  function updateCompassStatus(msg, isError) {
+    var s = el('compass-status');
+    s.textContent = msg;
+    s.className = 'alert' + (isError ? ' error' : '');
+  }
+
+  function startLive() {
+    live.active = true;
+    updateCompassStatus('البوصلة المباشرة مفعّلة — أدر جهازك حتى يشير السهم الذهبي للأعلى تمامًا.');
+    live.timer = setTimeout(function () {
+      if (live.heading === null) {
+        stopLive();
+        updateCompassStatus('لم تصل بيانات اتجاه من هذا الجهاز.', true);
+        el('compass-fallback').style.display = 'block';
+      }
+    }, 4000);
+  }
+  function stopLive() { live.active = false; if (live.timer) clearTimeout(live.timer); }
+
+  function onOrientation(ev) {
+    var heading = null;
+    if (typeof ev.webkitCompassHeading === 'number' && !isNaN(ev.webkitCompassHeading)) {
+      heading = ev.webkitCompassHeading; // iOS: already clockwise from north
+    } else if (typeof ev.alpha === 'number' && ev.alpha !== null) {
+      heading = (360 - ev.alpha) % 360; // Android: alpha is counter-clockwise
+    }
+    if (heading === null || isNaN(heading)) return;
+    live.heading = heading;
+    if (live.timer) { clearTimeout(live.timer); live.timer = null; }
+    var rot = (state.bearing - heading + 360) % 360;
+    arrow.setAttribute('transform', 'rotate(' + rot.toFixed(1) + ' 150 150)');
+  }
+
+  function initCompass() {
+    var status = el('compass-status');
+    var btnIos = el('btn-compass'), btnAuto = el('btn-compass-auto');
+    if (typeof window.DeviceOrientationEvent !== 'undefined' &&
+        typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+      // iOS 13+: permission must be requested from a user gesture
+      btnIos.style.display = 'inline-block';
+      updateCompassStatus('على iPhone/iPad، انقر الزر للسماح بالوصول إلى البوصلة.');
+      btnIos.addEventListener('click', function () {
+        window.DeviceOrientationEvent.requestPermission().then(function (res) {
+          if (res === 'granted') {
+            window.addEventListener('deviceorientation', onOrientation);
+            startLive();
+            btnIos.style.display = 'none';
+          } else {
+            updateCompassStatus('تم رفض إذن البوصلة.', true);
+            el('compass-fallback').style.display = 'block';
+          }
+        }).catch(function () {
+          updateCompassStatus('تعذر الوصول إلى مستشعر البوصلة.', true);
+          el('compass-fallback').style.display = 'block';
+        });
+      });
+    } else if ('DeviceOrientationEvent' in window || 'ondeviceorientation' in window) {
+      btnAuto.style.display = 'inline-block';
+      updateCompassStatus('قد يحتوي هذا الجهاز على مستشعر بوصلة. انقر لبدء البوصلة المباشرة.');
+      btnAuto.addEventListener('click', function () {
+        window.addEventListener('deviceorientation', onOrientation);
+        startLive();
+        btnAuto.style.display = 'none';
+      });
+    } else {
+      updateCompassStatus('لا يوجد مستشعر بوصلة في هذا الجهاز — استخدم الطريقة اليدوية أدناه.', true);
+      el('compass-fallback').style.display = 'block';
+    }
+  }
+
+  function init() {
+    App.loadCities().then(function (cities) {
+      cities.forEach(function (c) {
+        var o = document.createElement('option');
+        o.value = c.slug; o.textContent = c.name + ', ' + c.country;
+        if (c.slug === 'cairo') o.selected = true;
+        citySelect.appendChild(o);
+      });
+      citySelect._cities = cities;
+    }).catch(function () {});
+    citySelect.addEventListener('change', function () {
+      var list = citySelect._cities || [];
+      var c = list.filter(function (x) { return x.slug === citySelect.value; })[0];
+      if (c) { state.city = c; render(); }
+    });
+    el('btn-geo').addEventListener('click', function () {
+      if (!navigator.geolocation) { updateCompassStatus('الموقع الجغرافي غير مدعوم — اختر مدينة من القائمة.', true); return; }
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        var list = citySelect._cities || [];
+        var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
+        if (!hit) return;
+        state.city = { name: 'موقعك', country: 'الأقرب: ' + hit.city.name, slug: hit.city.slug, lat: pos.coords.latitude, lng: pos.coords.longitude };
+        citySelect.value = hit.city.slug;
+        render();
+      }, function () { updateCompassStatus('الموقع غير متاح — اختر مدينة من القائمة.', true); }, { timeout: 10000 });
+    });
+    render();
+    initCompass();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<!-- Newsletter: slide-in popup (all pages) -->
+<aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="اشترك في رسالة SalahTime" aria-hidden="true">
+  <button type="button" class="nl-close" aria-label="إغلاق">×</button>
+  <h3>رسالة SalahTime</h3>
+  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية — رسالة مدروسة كل يوم جمعة.</p>
+  <form data-nl-form="slidein" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">اشترك مجانًا</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p>انقر رابط التفعيل لتفعيل اشتراكك.</p>
+  </div>
+  <div class="nl-soon" role="status">يُفتتح الاشتراك مع إطلاق getsalahtime.com.</div>
+  <p class="nl-note">مجاني للأبد · إلغاء الاشتراك في أي وقت</p>
+</aside>
+<script src="/ar/assets/js/newsletter.js"></script>
+</body>
+</html>

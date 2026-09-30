@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VZK88PBTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7VZK88PBTP');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hijri Calendar — Islamic Date Today | SalahTime</title>
+<meta name="description" content="Today's Hijri date, the current Islamic month calendar, and countdowns to Ramadan, Eid al-Fitr and Eid al-Adha.">
+<link rel="canonical" href="https://getsalahtime.com/ar/hijri.html">
+<link rel="stylesheet" href="/ar/assets/css/style-ar.css">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/hijri.html">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/hijri.html">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/hijri.html">
+<link rel="alternate" hreflang="en" href="https://getsalahtime.com/hijri.html">
+<link rel="alternate" hreflang="ar" href="https://getsalahtime.com/ar/hijri.html">
+<link rel="alternate" hreflang="x-default" href="https://getsalahtime.com/hijri.html">
+</head>
+<body>
+<header class="site-header"><div class="container"><a class="brand" href="/ar/">SalahTime</a><span class="tagline">مواقيت صلاة دقيقة للعالم الإسلامي</span><nav class="nav"><a href="/ar/">الرئيسية</a><a href="/ar/qibla.html">القبلة</a><a href="/ar/hijri.html" aria-current="page">التقويم الهجري</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/cities/">المدن</a><a href="/ar/newsletter.html">النشرة البريدية</a><span class="lang-switch"><a href="/hijri.html">EN</a> | عربي</span></nav></div></header>
+<main class="container">
+<p class="breadcrumbs"><a href="/ar/">الرئيسية</a> ← التقويم الهجري</p>
+
+<!-- ADSENSE: banner-top -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+<section class="card">
+  <h2>التاريخ الهجري اليوم</h2>
+  <p class="hijri-big" id="hijri-today">…</p>
+  <p class="center muted" id="greg-today"></p>
+  <p class="alert" id="hijri-warn" style="display:none">متصفحك لا يدعم التقويم الإسلامي — لا يمكن عرض التواريخ الهجرية.</p>
+</section>
+
+<div class="grid">
+  <section class="card">
+    <h2 id="month-title">هذا الشهر</h2>
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:6px">
+      <button type="button" class="btn" id="btn-prev">السابق →</button>
+      <button type="button" class="btn" id="btn-next">← التالي</button>
+    </div>
+    <div class="month-grid" id="month-grid" aria-label="Hijri month calendar"></div>
+    <p class="small muted center" style="margin-bottom:0">الأيام الذهبية تميز 1 رمضان و1 شوال (عيد الفطر) و10 ذو الحجة (عيد الأضحى).</p>
+  </section>
+  <section class="card">
+    <h2>الأيام المباركة القادمة</h2>
+    <ul class="holy-list" id="holy-countdowns"></ul>
+    <p class="small muted" style="margin-bottom:0">تتبع التواريخ تقويم أم القرى وقد تختلف بيوم عن إعلانات رؤية الهلال المحلية.</p>
+  </section>
+</div>
+
+<section class="card seo-copy">
+  <h2>عن التقويم الهجري</h2>
+  <p>التقويم الهجري (الإسلامي) تقويم قمري من 12 شهرًا، يبدأ كل شهر برؤية الهلال الجديد. السنة الهجرية نحو 354 يومًا — أقصر بنحو 11 يومًا من السنة الشمسية الميلادية — ولهذا يتقدم رمضان والعيدان عبر الفصول كل عام. يبدأ التأريخ من هجرة النبي محمد من مكة إلى المدينة سنة 622م، ولذلك تُكتب السنة الحالية باللاحقة "هـ".</p>
+  <p>تتناوب الشهور بين 29 و30 يومًا، ويُضاف يوم زائد إلى الشهر الأخير، ذو الحجة، في السنوات الكبيسة. ولأن التقويم يعتمد على القمر، قد تختلف بداية الشهر بيوم بين الدول التي تعتمد الرؤية الشرعية وتلك التي تستخدم الحساب الفلكي، مثل تقويم أم القرى السعودي المستخدم في هذه الصفحة.</p>
+</section>
+
+<!-- ADSENSE: sidebar/bottom -->
+<div class="ad-slot" role="complementary" aria-label="إعلان">إعلان</div>
+
+</main>
+<footer class="site-footer"><div class="container"><nav class="nav"><a href="/ar/about.html">عن الموقع</a><a href="/ar/contact.html">اتصل بنا</a><a href="/ar/privacy.html">الخصوصية</a><a href="/ar/methods.html">طرق الحساب</a><a href="/ar/newsletter.html">النشرة البريدية</a></nav><p>© 2026 SalahTime. تُحسب مواقيت الصلاة فلكيًا؛ يُرجى التأكد من مسجدك المحلي.</p></div></footer>
+<script src="/ar/assets/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var App = window.SalahTimeApp;
+  var el = function (id) { return document.getElementById(id); };
+  var viewed = new Date(); // gregorian date inside the displayed islamic month
+  var DOW = ['أح', 'إث', 'ثلا', 'أر', 'خم', 'جم', 'سب'];
+  var HOLY = { '9-1': 'بداية رمضان', '10-1': 'عيد الفطر', '12-10': 'عيد الأضحى' };
+
+  function renderMonth() {
+    var grid = el('month-grid');
+    grid.innerHTML = '';
+    var span = App.hijriMonthSpan(viewed);
+    if (!span) return;
+    el('month-title').textContent = App.islamicMonthName(span.year, span.month) + ' ' + span.year + ' AH';
+
+    DOW.forEach(function (d) {
+      var h = document.createElement('div'); h.className = 'dow'; h.textContent = d;
+      grid.appendChild(h);
+    });
+    var lead = span.first.getDay(); // 0 = Sunday
+    for (var i = 0; i < lead; i++) {
+      var e = document.createElement('div'); e.className = 'day empty'; grid.appendChild(e);
+    }
+    var todayKey = new Date().toDateString();
+    for (var t = span.first.getTime(); t <= span.last.getTime(); t += 86400000) {
+      (function (time) {
+        var g = new Date(time);
+        var p = App.getIslamicParts(new Date(time + 12 * 3600000));
+        var cell = document.createElement('div');
+        cell.className = 'day';
+        if (g.toDateString() === todayKey) cell.classList.add('today');
+        if (p && HOLY[p.month + '-' + p.day]) { cell.classList.add('holy'); cell.title = HOLY[p.month + '-' + p.day]; }
+        var num = document.createElement('div'); num.textContent = p ? p.day : '';
+        var greg = document.createElement('div'); greg.className = 'g'; greg.textContent = g.getDate();
+        cell.appendChild(num); cell.appendChild(greg);
+        grid.appendChild(cell);
+      })(t);
+    }
+    // keep viewed anchored for prev/next navigation
+    viewed = new Date(span.first.getTime() + 12 * 3600000);
+    grid._span = span;
+  }
+
+  function init() {
+    if (!App.islamicSupported()) {
+      el('hijri-warn').style.display = 'block';
+      el('hijri-today').textContent = '—';
+      return;
+    }
+    var now = new Date();
+    el('hijri-today').textContent = App.formatHijri(now);
+    el('greg-today').textContent = App.formatGregorian(now);
+
+    var holy = el('holy-countdowns');
+    App.holyDaysCountdowns().forEach(function (h) {
+      var li = document.createElement('li');
+      var name = document.createElement('span');
+      var strong = document.createElement('strong'); strong.textContent = h.name;
+      name.appendChild(strong);
+      if (h.next) {
+        var sub = document.createElement('div'); sub.className = 'muted small';
+        sub.textContent = h.arabic + ' ' + h.next.hijriYear + ' AH \u2022 ' + App.formatGregorian(h.next.date);
+        name.appendChild(sub);
+      }
+      var days = document.createElement('span'); days.className = 'days';
+      days.textContent = h.next ? App.daysAwayText(h.next.daysAway) : '—';
+      li.appendChild(name); li.appendChild(days);
+      holy.appendChild(li);
+    });
+
+    renderMonth();
+    el('btn-prev').addEventListener('click', function () {
+      var span = el('month-grid')._span;
+      if (span) viewed = new Date(span.first.getTime() - 86400000);
+      renderMonth();
+    });
+    el('btn-next').addEventListener('click', function () {
+      var span = el('month-grid')._span;
+      if (span) viewed = new Date(span.last.getTime() + 86400000);
+      renderMonth();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<!-- Newsletter: slide-in popup (all pages) -->
+<aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="اشترك في رسالة SalahTime" aria-hidden="true">
+  <button type="button" class="nl-close" aria-label="إغلاق">×</button>
+  <h3>رسالة SalahTime</h3>
+  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية — رسالة مدروسة كل يوم جمعة.</p>
+  <form data-nl-form="slidein" novalidate>
+    <div class="nl-form">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
+      <button type="submit" class="btn btn-primary">اشترك مجانًا</button>
+    </div>
+  </form>
+  <div class="nl-done" role="status">
+    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p>انقر رابط التفعيل لتفعيل اشتراكك.</p>
+  </div>
+  <div class="nl-soon" role="status">يُفتتح الاشتراك مع إطلاق getsalahtime.com.</div>
+  <p class="nl-note">مجاني للأبد · إلغاء الاشتراك في أي وقت</p>
+</aside>
+<script src="/ar/assets/js/newsletter.js"></script>
+</body>
+</html>

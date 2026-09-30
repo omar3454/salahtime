@@ -509,3 +509,5 @@ table.data tbody tr:nth-child(even) td { background: #fffdf7; }
 .duaa .tr { font-style: italic; color: var(--ink-soft); margin: 0 0 4px; }
 .duaa .en { margin: 0; font-weight: 600; color: var(--ink); }
 .duaa .src { font-size: 0.82rem; color: var(--ink-soft); margin: 8px 0 0; }
+
+.lang-switch{margin-inline-start:14px;font-size:.9rem;white-space:nowrap}.lang-switch a{color:var(--gold)}
