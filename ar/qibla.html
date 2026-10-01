@@ -237,9 +237,10 @@
     var onError = function () {
       i++;
       if (i < attempts.length) {
+        updateCompassStatus('إشارة GPS ضعيفة — جارٍ تجربة تحديد الموقع التقريبي…');
         navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
       } else {
-        updateCompassStatus('الموقع غير متاح — تأكد من تشغيل خدمات الموقع لهذا المتصفح في إعدادات هاتفك، ثم انقر "حاول مجددًا". نستخدم ' + state.city.name + ' للاتجاه حاليًا.', true);
+        updateCompassStatus('تعذّر تحديد موقعك — ضعف إشارة GPS هو السبب المعتاد داخل المباني. نستخدم ' + state.city.name + ' للاتجاه؛ البوصلة المباشرة ما زالت تعمل.', true);
         el('btn-retry').style.display = 'inline-block';
       }
     };

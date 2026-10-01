@@ -233,9 +233,10 @@
     var onError = function () {
       i++;
       if (i < attempts.length) {
+        updateCompassStatus('GPS signal too weak — trying approximate location…');
         navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
       } else {
-        updateCompassStatus('Location unavailable — make sure Location Services are turned on for this browser in your phone settings, then tap Try again. Using ' + state.city.name + ' for the bearing meanwhile.', true);
+        updateCompassStatus('Couldn\u2019t get your location — weak GPS signal is the usual cause indoors. Using ' + state.city.name + ' for the bearing; the live compass still works.', true);
         el('btn-retry').style.display = 'inline-block';
       }
     };
