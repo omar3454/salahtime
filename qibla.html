@@ -233,10 +233,10 @@
     var onError = function () {
       i++;
       if (i < attempts.length) {
-        updateCompassStatus('GPS signal too weak — trying approximate location…');
+        updateCompassStatus('Weak GPS — trying approximate location…');
         navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
       } else {
-        updateCompassStatus('Couldn\u2019t get your location — weak GPS signal is the usual cause indoors. Using ' + state.city.name + ' for the bearing; the live compass still works.', true);
+        updateCompassStatus('Enable location for accurate Qibla — using ' + state.city.name + ' for now.', true);
         el('btn-retry').style.display = 'inline-block';
       }
     };
