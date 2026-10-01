@@ -33,9 +33,8 @@
 
 <section class="compass-card">
   <h2>محدد القبلة</h2>
-  <p class="compass-sub">القبلة هي اتجاه الكعبة في مكة الذي يستقبله المسلمون في الصلاة. اختر مدينتك أو استخدم موقعك — ثم استدر حتى تصل الكعبة إلى العلامة الذهبية في الأعلى.</p>
+  <p class="compass-sub">القبلة هي اتجاه الكعبة في مكة الذي يستقبله المسلمون في الصلاة. اختر مدينتك — أو انقر <strong>فعّل البوصلة الحية</strong> لتوجيه البوصلة بموقعك الدقيق.</p>
   <div class="location-controls">
-    <button type="button" class="btn btn-gold" id="btn-geo">استخدم موقعي</button>
     <select id="city-select" aria-label="اختر مدينة"></select>
   </div>
   <div class="qibla-stats">
@@ -68,7 +67,6 @@
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">فعّل البوصلة الحية</button>
-    <button type="button" class="btn" id="btn-compass-auto" style="display:none">ابدأ البوصلة الحية</button>
   </div>
   <p class="compass-status" id="compass-status">جارٍ البحث عن مستشعر بوصلة…</p>
   <p class="calib-tip">تلميح: إذا قفزت البوصلة، لوّح بهاتفك على شكل رقم 8 لمعايرة المستشعر، وأبعد الأجسام المعدنية والمغناطيس.</p>
@@ -216,40 +214,58 @@
     updateFace();
   }
 
+  function locate() {
+    if (!navigator.geolocation) return; // compass status already explains the situation
+    updateCompassStatus('جارٍ تحديد موقعك…');
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var list = citySelect._cities || [];
+      var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
+      state.city = { name: 'موقعك', country: hit ? 'الأقرب: ' + hit.city.name : '', slug: hit ? hit.city.slug : 'custom', lat: pos.coords.latitude, lng: pos.coords.longitude };
+      if (hit) citySelect.value = hit.city.slug;
+      render();
+      updateCompassStatus('تم تحديد الموقع — استدر حتى تصل الكعبة إلى العلامة الذهبية.');
+    }, function () {
+      updateCompassStatus('الموقع غير متاح — نستخدم ' + state.city.name + ' للاتجاه. البوصلة المباشرة ما زالت تعمل.', true);
+    }, { timeout: 10000 });
+  }
+
   function initCompass() {
-    var btnIos = el('btn-compass'), btnAuto = el('btn-compass-auto');
-    if (typeof window.DeviceOrientationEvent !== 'undefined' &&
-        typeof window.DeviceOrientationEvent.requestPermission === 'function') {
-      // iOS 13+: permission must be requested from a user gesture
-      btnIos.style.display = 'inline-block';
-      updateCompassStatus('على iPhone/iPad، انقر الزر للسماح بالوصول إلى البوصلة.');
-      btnIos.addEventListener('click', function () {
+    var btn = el('btn-compass');
+    var canOrient = ('DeviceOrientationEvent' in window) || ('ondeviceorientation' in window);
+    var canGeo = !!(navigator.geolocation);
+    if (!canOrient && !canGeo) {
+      updateCompassStatus('لا توجد بوصلة حية هنا — هذا المتصفح لا يوفر مستشعر بوصلة ولا الموقع (شائع في المتصفحات داخل التطبيقات). اتجاه قبلتك للمدينة المختارة موضح أعلاه.', true);
+      el('compass-fallback').style.display = 'block';
+      return;
+    }
+    btn.style.display = 'inline-block';
+    updateCompassStatus(canOrient
+      ? 'انقر الزر — سنستخدم موقعك والبوصلة لتوجيهك إلى القبلة.'
+      : 'انقر الزر لاستخدام موقعك الدقيق لاتجاه القبلة.');
+    btn.addEventListener('click', function () {
+      btn.style.display = 'none';
+      var startOrient = function () {
+        window.addEventListener('deviceorientation', onOrientation);
+        startLive();
+      };
+      if (typeof window.DeviceOrientationEvent !== 'undefined' &&
+          typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+        // iOS 13+: permission must be requested from a user gesture
         window.DeviceOrientationEvent.requestPermission().then(function (res) {
-          if (res === 'granted') {
-            window.addEventListener('deviceorientation', onOrientation);
-            startLive();
-            btnIos.style.display = 'none';
-          } else {
-            updateCompassStatus('تم رفض إذن البوصلة.', true);
+          if (res === 'granted') { startOrient(); }
+          else {
+            updateCompassStatus('تم رفض إذن البوصلة — سنعرض اتجاه قبلتك بدلًا من ذلك.', true);
             el('compass-fallback').style.display = 'block';
           }
         }).catch(function () {
           updateCompassStatus('تعذر الوصول إلى مستشعر البوصلة.', true);
           el('compass-fallback').style.display = 'block';
         });
-      });
-    } else if ('DeviceOrientationEvent' in window || 'ondeviceorientation' in window) {
-      btnAuto.style.display = 'inline-block';
-      updateCompassStatus('قد يحتوي هذا الجهاز على مستشعر بوصلة. انقر لبدء البوصلة المباشرة.');
-      btnAuto.addEventListener('click', function () {
-        window.addEventListener('deviceorientation', onOrientation);
-        startLive();
-        btnAuto.style.display = 'none';
-      });
-    } else {
-      updateCompassStatus('لا يوجد مستشعر بوصلة في هذا الجهاز — استخدم الطريقة اليدوية أدناه.', true);
-      el('compass-fallback').style.display = 'block';
-    }
+      } else if (canOrient) {
+        startOrient();
+      }
+      locate();
+    });
   }
 
   function init() {
@@ -267,17 +283,6 @@
       var list = citySelect._cities || [];
       var c = list.filter(function (x) { return x.slug === citySelect.value; })[0];
       if (c) { state.city = c; render(); }
-    });
-    el('btn-geo').addEventListener('click', function () {
-      if (!navigator.geolocation) { updateCompassStatus('الموقع الجغرافي غير مدعوم — اختر مدينة من القائمة.', true); return; }
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        var list = citySelect._cities || [];
-        var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
-        if (!hit) return;
-        state.city = { name: 'موقعك', country: 'الأقرب: ' + hit.city.name, slug: hit.city.slug, lat: pos.coords.latitude, lng: pos.coords.longitude };
-        citySelect.value = hit.city.slug;
-        render();
-      }, function () { updateCompassStatus('الموقع غير متاح — اختر مدينة من القائمة.', true); }, { timeout: 10000 });
     });
     render();
     initCompass();

@@ -29,9 +29,8 @@
 
 <section class="compass-card">
   <h2>Qibla finder</h2>
-  <p class="compass-sub">The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city or use your location — then turn until the Kaaba reaches the gold notch at the top.</p>
+  <p class="compass-sub">The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city — or tap <strong>Enable live compass</strong> to point the dial with your exact location.</p>
   <div class="location-controls">
-    <button type="button" class="btn btn-gold" id="btn-geo">Use my location</button>
     <select id="city-select" aria-label="Choose a city"></select>
   </div>
   <div class="qibla-stats">
@@ -64,7 +63,6 @@
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">Enable live compass</button>
-    <button type="button" class="btn" id="btn-compass-auto" style="display:none">Start live compass</button>
   </div>
   <p class="compass-status" id="compass-status">Checking for a compass sensor…</p>
   <p class="calib-tip">Tip: if the dial jumps around, wave your phone in a figure-8 to calibrate the sensor, and keep metal objects and magnets away.</p>
@@ -212,40 +210,58 @@
     updateFace();
   }
 
+  function locate() {
+    if (!navigator.geolocation) return; // compass status already explains the situation
+    updateCompassStatus('Getting your location…');
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var list = citySelect._cities || [];
+      var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
+      state.city = { name: 'Your location', country: hit ? 'nearest: ' + hit.city.name : '', slug: hit ? hit.city.slug : 'custom', lat: pos.coords.latitude, lng: pos.coords.longitude };
+      if (hit) citySelect.value = hit.city.slug;
+      render();
+      updateCompassStatus('Location found — turn until the Kaaba reaches the gold notch.');
+    }, function () {
+      updateCompassStatus('Location unavailable — using ' + state.city.name + ' for the bearing. The live compass still works.', true);
+    }, { timeout: 10000 });
+  }
+
   function initCompass() {
-    var btnIos = el('btn-compass'), btnAuto = el('btn-compass-auto');
-    if (typeof window.DeviceOrientationEvent !== 'undefined' &&
-        typeof window.DeviceOrientationEvent.requestPermission === 'function') {
-      // iOS 13+: permission must be requested from a user gesture
-      btnIos.style.display = 'inline-block';
-      updateCompassStatus('On iPhone/iPad, tap the button to allow compass access.');
-      btnIos.addEventListener('click', function () {
+    var btn = el('btn-compass');
+    var canOrient = ('DeviceOrientationEvent' in window) || ('ondeviceorientation' in window);
+    var canGeo = !!(navigator.geolocation);
+    if (!canOrient && !canGeo) {
+      updateCompassStatus('No live compass here — this browser exposes neither a compass sensor nor location (common in in-app browsers). Your Qibla direction for the selected city is shown above.', true);
+      el('compass-fallback').style.display = 'block';
+      return;
+    }
+    btn.style.display = 'inline-block';
+    updateCompassStatus(canOrient
+      ? 'Tap the button — we’ll use your location and compass to point you to the Qibla.'
+      : 'Tap the button to use your exact location for the Qibla bearing.');
+    btn.addEventListener('click', function () {
+      btn.style.display = 'none';
+      var startOrient = function () {
+        window.addEventListener('deviceorientation', onOrientation);
+        startLive();
+      };
+      if (typeof window.DeviceOrientationEvent !== 'undefined' &&
+          typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+        // iOS 13+: permission must be requested from a user gesture
         window.DeviceOrientationEvent.requestPermission().then(function (res) {
-          if (res === 'granted') {
-            window.addEventListener('deviceorientation', onOrientation);
-            startLive();
-            btnIos.style.display = 'none';
-          } else {
-            updateCompassStatus('Compass permission was denied.', true);
+          if (res === 'granted') { startOrient(); }
+          else {
+            updateCompassStatus('Compass permission was denied — showing your Qibla bearing instead.', true);
             el('compass-fallback').style.display = 'block';
           }
         }).catch(function () {
           updateCompassStatus('Could not access the compass sensor.', true);
           el('compass-fallback').style.display = 'block';
         });
-      });
-    } else if ('DeviceOrientationEvent' in window || 'ondeviceorientation' in window) {
-      btnAuto.style.display = 'inline-block';
-      updateCompassStatus('This device may have a compass sensor. Tap to start the live compass.');
-      btnAuto.addEventListener('click', function () {
-        window.addEventListener('deviceorientation', onOrientation);
-        startLive();
-        btnAuto.style.display = 'none';
-      });
-    } else {
-      updateCompassStatus('No live compass here — this browser does not expose the orientation sensor (common in in-app browsers). Your exact Qibla direction is shown above.', true);
-      el('compass-fallback').style.display = 'block';
-    }
+      } else if (canOrient) {
+        startOrient();
+      }
+      locate();
+    });
   }
 
   function init() {
@@ -263,17 +279,6 @@
       var list = citySelect._cities || [];
       var c = list.filter(function (x) { return x.slug === citySelect.value; })[0];
       if (c) { state.city = c; render(); }
-    });
-    el('btn-geo').addEventListener('click', function () {
-      if (!navigator.geolocation) { updateCompassStatus('Geolocation not supported — pick a city from the list.', true); return; }
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        var list = citySelect._cities || [];
-        var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
-        if (!hit) return;
-        state.city = { name: 'Your location', country: 'nearest: ' + hit.city.name, slug: hit.city.slug, lat: pos.coords.latitude, lng: pos.coords.longitude };
-        citySelect.value = hit.city.slug;
-        render();
-      }, function () { updateCompassStatus('Location unavailable — pick a city from the list.', true); }, { timeout: 10000 });
     });
     render();
     initCompass();
