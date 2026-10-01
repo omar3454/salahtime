@@ -27,55 +27,55 @@
 <!-- ADSENSE: banner-top -->
 <div class="ad-slot" role="complementary" aria-label="Advertisement">Advertisement</div>
 
-<section class="card">
+<section class="compass-card">
   <h2>Qibla finder</h2>
-  <p>The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city or use your location to get the exact bearing.</p>
-  <div class="location-controls" style="justify-content:flex-start">
-    <button type="button" class="btn btn-primary" id="btn-geo">Use my location</button>
+  <p class="compass-sub">The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city or use your location — then turn until the Kaaba reaches the gold notch at the top.</p>
+  <div class="location-controls">
+    <button type="button" class="btn btn-gold" id="btn-geo">Use my location</button>
     <select id="city-select" aria-label="Choose a city"></select>
   </div>
-  <div class="qibla-readout">
-    <div class="degrees" id="qibla-deg">—</div>
-    <p><strong id="qibla-city">Cairo, Egypt</strong></p>
-    <p class="dist" id="qibla-dist"></p>
+  <div class="qibla-stats">
+    <div class="stat"><span class="stat-v" id="qibla-deg">—</span><span class="stat-l">Bearing</span></div>
+    <div class="stat"><span class="stat-v" id="qibla-dist">—</span><span class="stat-l">To Kaaba</span></div>
+    <div class="stat"><span class="stat-v" id="qibla-words">—</span><span class="stat-l">Direction</span></div>
   </div>
-  <svg class="qibla-compass" viewBox="0 0 300 300" role="img" aria-label="Qibla compass">
-    <circle cx="150" cy="150" r="140" fill="#faf8f2" stroke="#0e6b4f" stroke-width="4"/>
-    <circle cx="150" cy="150" r="110" fill="none" stroke="#e3ddd0" stroke-width="1"/>
-    <g id="ticks" font-family="inherit" font-size="18" font-weight="700" text-anchor="middle">
-      <text x="150" y="34" fill="#0e6b4f">N</text>
-      <text x="270" y="157" fill="#43564f">E</text>
-      <text x="150" y="282" fill="#43564f">S</text>
-      <text x="30" y="157" fill="#43564f">W</text>
-    </g>
-    <g id="qibla-arrow">
-      <polygon points="150,34 138,110 150,98 162,110" fill="#c9a227" stroke="#8a6f1a" stroke-width="1.5"/>
-      <polygon points="150,266 142,210 150,220 158,210" fill="#9db3a9"/>
-      <line x1="150" y1="110" x2="150" y2="210" stroke="#c9a227" stroke-width="3"/>
-    </g>
-    <circle cx="150" cy="150" r="12" fill="#0e6b4f"/>
-    <circle cx="150" cy="150" r="5" fill="#faf8f2"/>
-  </svg>
-  <p class="center small muted">The gold arrow points toward the Qibla (north is up).</p>
-</section>
-
-<section class="card">
-  <h2>Live compass</h2>
-  <p class="small">Point your phone and the arrow will track the Qibla as you turn. This uses your device's orientation sensor.</p>
-  <p id="compass-controls">
-    <button type="button" class="btn btn-primary" id="btn-compass" style="display:none">Enable live compass</button>
+  <div class="compass-wrap">
+    <svg id="qibla-svg" viewBox="0 0 320 320" role="img" aria-label="Live Qibla compass">
+      <circle cx="160" cy="160" r="152" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.5"/>
+      <circle cx="160" cy="160" r="146" fill="#0d2b21"/>
+      <g id="dial">
+        <g id="ticks"></g>
+        <g id="cardinals" font-weight="700" text-anchor="middle"></g>
+        <g id="qibla-dir">
+          <line x1="160" y1="160" x2="160" y2="56" stroke="#c9a227" stroke-width="2" opacity="0.4"/>
+          <g id="kaaba" transform="translate(160,56)" opacity="0.9">
+            <circle class="kaaba-halo" r="26" fill="none" stroke="#c9a227" stroke-width="3" opacity="0"/>
+            <rect x="-14" y="-14" width="28" height="28" rx="5" fill="#0d0d0d" stroke="#c9a227" stroke-width="2"/>
+            <rect x="-14" y="-5" width="28" height="8" fill="#c9a227"/>
+            <rect x="4" y="2" width="7" height="12" fill="#c9a227"/>
+          </g>
+        </g>
+      </g>
+      <polygon points="160,4 149,24 171,24" fill="#c9a227"/>
+      <text id="c-deg" x="160" y="158" text-anchor="middle" class="c-deg">—</text>
+      <text id="c-label" x="160" y="184" text-anchor="middle" class="c-label">compass off</text>
+    </svg>
+    <div class="align-pill" id="align-pill">North is up — the Kaaba marker shows your Qibla bearing</div>
+  </div>
+  <div class="compass-actions">
+    <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">Enable live compass</button>
     <button type="button" class="btn" id="btn-compass-auto" style="display:none">Start live compass</button>
-  </p>
-  <p class="alert" id="compass-status">Checking for a compass sensor…</p>
+  </div>
+  <p class="compass-status" id="compass-status">Checking for a compass sensor…</p>
+  <p class="calib-tip">Tip: if the dial jumps around, wave your phone in a figure-8 to calibrate the sensor, and keep metal objects and magnets away.</p>
   <div id="compass-fallback" style="display:none">
     <h3>No compass sensor? Do this instead</h3>
     <p class="alert" id="fallback-direction"></p>
-    <p><a class="btn btn-primary" id="fallback-map" href="#" target="_blank" rel="noopener">See the line to Mecca on a map</a></p>
+    <p><a class="btn btn-gold" id="fallback-map" href="#" target="_blank" rel="noopener">See the line to Mecca on a map</a></p>
     <ol>
       <li>Find north with any compass app, the sun (rises in the east, sets in the west), or a landmark you know.</li>
-      <li>Turn so that north is behind the top of the compass above.</li>
-      <li>Face the direction of the gold arrow — that is your Qibla.</li>
-      <li>Keep metal objects and magnets away from the phone for an accurate reading.</li>
+      <li>Hold the phone so the N on the dial points north.</li>
+      <li>Face the direction of the Kaaba marker — that is your Qibla.</li>
     </ol>
     <p class="small">Tip: in-app browsers (opened inside other apps) block the compass sensor. Open this page in Safari or Chrome for the live compass.</p>
   </div>
@@ -94,51 +94,109 @@
   var App = window.SalahTimeApp;
   var PT = window.PrayTimes;
   var CAIRO = { name: 'Cairo', country: 'Egypt', slug: 'cairo', lat: 30.0444, lng: 31.2357 };
-
-  var state = { city: CAIRO, bearing: PT.qibla(CAIRO.lat, CAIRO.lng) };
-  var el = function (id) { return document.getElementById(id); };
-  var citySelect = el('city-select'), arrow = el('qibla-arrow');
-
   var KAABA = { lat: 21.422487, lng: 39.826206 };
+
+  var state = { city: CAIRO, bearing: 0, smooth: null, live: false };
+  var el = function (id) { return document.getElementById(id); };
+  var citySelect = el('city-select'), dial = el('dial'), qiblaDir = el('qibla-dir'),
+      kaaba = el('kaaba'), cDeg = el('c-deg'), cLabel = el('c-label'),
+      pill = el('align-pill'), svg = el('qibla-svg');
+
+  function rad(d) { return d * Math.PI / 180; }
+  function polar(r, deg) { return [160 + r * Math.sin(rad(deg)), 160 - r * Math.cos(rad(deg))]; }
+
+  function buildDial() {
+    var ticks = '', i, p1, p2, major;
+    for (i = 0; i < 360; i += 6) {
+      major = (i % 30 === 0);
+      p1 = polar(major ? 124 : 132, i); p2 = polar(140, i);
+      ticks += '<line x1="' + p1[0].toFixed(1) + '" y1="' + p1[1].toFixed(1) +
+        '" x2="' + p2[0].toFixed(1) + '" y2="' + p2[1].toFixed(1) +
+        '" stroke="' + (major ? '#c9a227' : 'rgba(255,255,255,0.28)') +
+        '" stroke-width="' + (major ? 2.5 : 1.2) + '"/>';
+    }
+    el('ticks').innerHTML = ticks;
+    var cards = '', labels = ['N', 'E', 'S', 'W'], degs = [0, 90, 180, 270], p, j;
+    for (j = 0; j < 4; j++) {
+      p = polar(110, degs[j]);
+      cards += '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 8).toFixed(1) +
+        '" font-size="24" fill="' + (j === 0 ? '#c9a227' : '#e8e2d4') + '">' + labels[j] + '</text>';
+    }
+    for (i = 30; i < 360; i += 30) {
+      if (i % 90 === 0) continue;
+      p = polar(92, i);
+      cards += '<text x="' + p[0].toFixed(1) + '" y="' + (p[1] + 4).toFixed(1) +
+        '" font-size="11" fill="rgba(232,226,212,0.55)">' + i + '°</text>';
+    }
+    el('cardinals').innerHTML = cards;
+  }
+
   function bearingToWords(b) {
     var dirs = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'];
     return dirs[Math.round(b / 45) % 8];
   }
 
+  function wrapDelta(d) { return ((d + 540) % 360) - 180; }
+
+  function updateFace() {
+    if (state.smooth === null) {
+      dial.setAttribute('transform', 'rotate(0 160 160)');
+      cDeg.textContent = '—';
+      cLabel.textContent = 'compass off';
+      svg.classList.remove('aligned');
+      kaaba.setAttribute('opacity', '0.9');
+      pill.className = 'align-pill';
+      pill.textContent = 'North is up — the Kaaba marker shows your Qibla bearing';
+      return;
+    }
+    var rot = (state.bearing - state.smooth + 360) % 360;
+    var off = Math.min(rot, 360 - rot);
+    var aligned = off <= 5;
+    dial.setAttribute('transform', 'rotate(' + (-state.smooth).toFixed(1) + ' 160 160)');
+    cDeg.textContent = aligned ? '✓' : Math.round(off) + '°';
+    cLabel.textContent = aligned ? 'Qibla' : 'off target';
+    kaaba.setAttribute('opacity', aligned ? '1' : '0.55');
+    if (svg.classList) svg.classList.toggle('aligned', aligned);
+    if (aligned) {
+      pill.className = 'align-pill ok';
+      pill.textContent = 'You are facing the Qibla';
+    } else {
+      pill.className = 'align-pill turn';
+      pill.textContent = (rot <= 180 ? 'Turn right' : 'Turn left') + ' · ' + Math.round(off) + '° to go';
+    }
+  }
+
   function render() {
     state.bearing = PT.qibla(state.city.lat, state.city.lng);
     el('qibla-deg').textContent = state.bearing.toFixed(1) + '°';
-    el('qibla-city').textContent = state.city.name + ', ' + state.city.country;
+    el('qibla-dist').textContent = Math.round(App.distanceToKaabaKm(state.city.lat, state.city.lng))
+      .toLocaleString('en') + ' km';
+    el('qibla-words').textContent = bearingToWords(state.bearing);
+    qiblaDir.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 160 160)');
     el('fallback-direction').textContent = 'From ' + state.city.name + ', face ' + bearingToWords(state.bearing) +
       ' — ' + state.bearing.toFixed(1) + '° clockwise from true north.';
     el('fallback-map').href = 'https://www.google.com/maps/dir/?api=1&origin=' + state.city.lat + ',' + state.city.lng +
       '&destination=' + KAABA.lat + ',' + KAABA.lng + '&travelmode=walking';
-    el('qibla-dist').textContent = Math.round(App.distanceToKaabaKm(state.city.lat, state.city.lng))
-      .toLocaleString('en') + ' km to the Kaaba';
-    arrow.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 150 150)');
-    if (!live.active) updateCompassStatus('Compass is static — north is up. The gold arrow shows the Qibla bearing of ' + state.bearing.toFixed(1) + '°.');
+    updateFace();
   }
-
-  var live = { active: false, heading: null, timer: null };
 
   function updateCompassStatus(msg, isError) {
     var s = el('compass-status');
     s.textContent = msg;
-    s.className = 'alert' + (isError ? ' error' : '');
+    s.className = 'compass-status' + (isError ? ' error' : '');
   }
 
   function startLive() {
-    live.active = true;
-    updateCompassStatus('Live compass on — rotate your device until the gold arrow points straight up.');
-    live.timer = setTimeout(function () {
-      if (live.heading === null) {
-        stopLive();
+    state.live = true;
+    updateCompassStatus('Live compass on — turn until the Kaaba reaches the gold notch.');
+    state.timer = setTimeout(function () {
+      if (state.smooth === null) {
+        state.live = false;
         updateCompassStatus('No orientation data received from this device.', true);
         el('compass-fallback').style.display = 'block';
       }
     }, 4000);
   }
-  function stopLive() { live.active = false; if (live.timer) clearTimeout(live.timer); }
 
   function onOrientation(ev) {
     var heading = null;
@@ -148,14 +206,13 @@
       heading = (360 - ev.alpha) % 360; // Android: alpha is counter-clockwise
     }
     if (heading === null || isNaN(heading)) return;
-    live.heading = heading;
-    if (live.timer) { clearTimeout(live.timer); live.timer = null; }
-    var rot = (state.bearing - heading + 360) % 360;
-    arrow.setAttribute('transform', 'rotate(' + rot.toFixed(1) + ' 150 150)');
+    if (state.smooth === null) state.smooth = heading;
+    else state.smooth = (state.smooth + wrapDelta(heading - state.smooth) * 0.3 + 360) % 360;
+    if (state.timer) { clearTimeout(state.timer); state.timer = null; }
+    updateFace();
   }
 
   function initCompass() {
-    var status = el('compass-status');
     var btnIos = el('btn-compass'), btnAuto = el('btn-compass-auto');
     if (typeof window.DeviceOrientationEvent !== 'undefined' &&
         typeof window.DeviceOrientationEvent.requestPermission === 'function') {
@@ -186,12 +243,13 @@
         btnAuto.style.display = 'none';
       });
     } else {
-      updateCompassStatus('No live compass here — this browser does not expose the orientation sensor (common in in-app browsers). Your exact Qibla direction is below.', true);
+      updateCompassStatus('No live compass here — this browser does not expose the orientation sensor (common in in-app browsers). Your exact Qibla direction is shown above.', true);
       el('compass-fallback').style.display = 'block';
     }
   }
 
   function init() {
+    buildDial();
     App.loadCities().then(function (cities) {
       cities.forEach(function (c) {
         var o = document.createElement('option');
