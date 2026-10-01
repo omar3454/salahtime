@@ -63,6 +63,7 @@
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">Enable live compass</button>
+    <button type="button" class="btn" id="btn-retry" style="display:none">Try again</button>
   </div>
   <p class="compass-status" id="compass-status">Checking for a compass sensor…</p>
   <p class="calib-tip">Tip: if the dial jumps around, wave your phone in a figure-8 to calibrate the sensor, and keep metal objects and magnets away.</p>
@@ -218,11 +219,13 @@
       var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
       state.city = { name: 'Your location', country: hit ? 'nearest: ' + hit.city.name : '', slug: hit ? hit.city.slug : 'custom', lat: pos.coords.latitude, lng: pos.coords.longitude };
       if (hit) citySelect.value = hit.city.slug;
+      el('btn-retry').style.display = 'none';
       render();
       updateCompassStatus('Location found — turn until the Kaaba reaches the gold notch.');
     }, function () {
-      updateCompassStatus('Location unavailable — using ' + state.city.name + ' for the bearing. The live compass still works.', true);
-    }, { timeout: 10000 });
+      updateCompassStatus('Location unavailable — allow location access for this site in your browser, then tap Try again. Using ' + state.city.name + ' for the bearing meanwhile.', true);
+      el('btn-retry').style.display = 'inline-block';
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 120000 });
   }
 
   function initCompass() {
@@ -260,6 +263,10 @@
       } else if (canOrient) {
         startOrient();
       }
+      locate();
+    });
+    el('btn-retry').addEventListener('click', function () {
+      el('btn-retry').style.display = 'none';
       locate();
     });
   }

@@ -67,6 +67,7 @@
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">فعّل البوصلة الحية</button>
+    <button type="button" class="btn" id="btn-retry" style="display:none">حاول مجددًا</button>
   </div>
   <p class="compass-status" id="compass-status">جارٍ البحث عن مستشعر بوصلة…</p>
   <p class="calib-tip">تلميح: إذا قفزت البوصلة، لوّح بهاتفك على شكل رقم 8 لمعايرة المستشعر، وأبعد الأجسام المعدنية والمغناطيس.</p>
@@ -222,11 +223,13 @@
       var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
       state.city = { name: 'موقعك', country: hit ? 'الأقرب: ' + hit.city.name : '', slug: hit ? hit.city.slug : 'custom', lat: pos.coords.latitude, lng: pos.coords.longitude };
       if (hit) citySelect.value = hit.city.slug;
+      el('btn-retry').style.display = 'none';
       render();
       updateCompassStatus('تم تحديد الموقع — استدر حتى تصل الكعبة إلى العلامة الذهبية.');
     }, function () {
-      updateCompassStatus('الموقع غير متاح — نستخدم ' + state.city.name + ' للاتجاه. البوصلة المباشرة ما زالت تعمل.', true);
-    }, { timeout: 10000 });
+      updateCompassStatus('الموقع غير متاح — فعّل إذن الموقع لهذه الصفحة في إعدادات المتصفح ثم انقر "حاول مجددًا". نستخدم ' + state.city.name + ' للاتجاه حاليًا.', true);
+      el('btn-retry').style.display = 'inline-block';
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 120000 });
   }
 
   function initCompass() {
@@ -264,6 +267,10 @@
       } else if (canOrient) {
         startOrient();
       }
+      locate();
+    });
+    el('btn-retry').addEventListener('click', function () {
+      el('btn-retry').style.display = 'none';
       locate();
     });
   }
