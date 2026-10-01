@@ -218,7 +218,14 @@
   function locate() {
     if (!navigator.geolocation) return; // compass status already explains the situation
     updateCompassStatus('جارٍ تحديد موقعك…');
-    navigator.geolocation.getCurrentPosition(function (pos) {
+    // Try precise GPS first; if it can't get a fix (common indoors), fall back to
+    // fast network-based positioning — plenty accurate for a Qibla bearing.
+    var attempts = [
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
+      { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 }
+    ];
+    var i = 0;
+    var onSuccess = function (pos) {
       var list = citySelect._cities || [];
       var hit = App.nearestCity(pos.coords.latitude, pos.coords.longitude, list);
       state.city = { name: 'موقعك', country: hit ? 'الأقرب: ' + hit.city.name : '', slug: hit ? hit.city.slug : 'custom', lat: pos.coords.latitude, lng: pos.coords.longitude };
@@ -226,10 +233,17 @@
       el('btn-retry').style.display = 'none';
       render();
       updateCompassStatus('تم تحديد الموقع — استدر حتى تصل الكعبة إلى العلامة الذهبية.');
-    }, function () {
-      updateCompassStatus('الموقع غير متاح — فعّل إذن الموقع لهذه الصفحة في إعدادات المتصفح ثم انقر "حاول مجددًا". نستخدم ' + state.city.name + ' للاتجاه حاليًا.', true);
-      el('btn-retry').style.display = 'inline-block';
-    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 120000 });
+    };
+    var onError = function () {
+      i++;
+      if (i < attempts.length) {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
+      } else {
+        updateCompassStatus('الموقع غير متاح — تأكد من تشغيل خدمات الموقع لهذا المتصفح في إعدادات هاتفك، ثم انقر "حاول مجددًا". نستخدم ' + state.city.name + ' للاتجاه حاليًا.', true);
+        el('btn-retry').style.display = 'inline-block';
+      }
+    };
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[0]);
   }
 
   function initCompass() {
