@@ -30,7 +30,7 @@
 
 <section class="compass-card">
   <h2>Qibla finder</h2>
-  <p class="compass-sub">The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city — or tap <strong>Enable live compass</strong> to point the dial with your exact location.</p>
+  <p class="compass-sub">The Qibla is the direction of the Kaaba in Mecca that Muslims face during prayer. Choose your city, or tap <strong>Enable live compass</strong> to point the dial with your exact location.</p>
   <div class="location-controls">
     <select id="city-select" aria-label="Choose a city"></select>
   </div>
@@ -60,7 +60,7 @@
       <text id="c-deg" x="160" y="158" text-anchor="middle" class="c-deg">—</text>
       <text id="c-label" x="160" y="184" text-anchor="middle" class="c-label">compass off</text>
     </svg>
-    <div class="align-pill" id="align-pill">North is up — the Kaaba marker shows your Qibla bearing</div>
+    <div class="align-pill" id="align-pill">North is up. The Kaaba marker shows your Qibla bearing</div>
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">Enable live compass</button>
@@ -75,7 +75,7 @@
     <ol>
       <li>Find north with any compass app, the sun (rises in the east, sets in the west), or a landmark you know.</li>
       <li>Hold the phone so the N on the dial points north.</li>
-      <li>Face the direction of the Kaaba marker — that is your Qibla.</li>
+      <li>Face the direction of the Kaaba marker. That is your Qibla.</li>
     </ol>
     <p class="small">Tip: in-app browsers (opened inside other apps) block the compass sensor. Open this page in Safari or Chrome for the live compass.</p>
   </div>
@@ -146,7 +146,7 @@
       svg.classList.remove('aligned');
       kaaba.setAttribute('opacity', '0.9');
       pill.className = 'align-pill';
-      pill.textContent = 'North is up — the Kaaba marker shows your Qibla bearing';
+      pill.textContent = 'North is up. The Kaaba marker shows your Qibla bearing';
       return;
     }
     var rot = (state.bearing - state.smooth + 360) % 360;
@@ -174,7 +174,7 @@
     el('qibla-words').textContent = bearingToWords(state.bearing);
     qiblaDir.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 160 160)');
     el('fallback-direction').textContent = 'From ' + state.city.name + ', face ' + bearingToWords(state.bearing) +
-      ' — ' + state.bearing.toFixed(1) + '° clockwise from true north.';
+      ', ' + state.bearing.toFixed(1) + '° clockwise from true north.';
     el('fallback-map').href = 'https://www.google.com/maps/dir/?api=1&origin=' + state.city.lat + ',' + state.city.lng +
       '&destination=' + KAABA.lat + ',' + KAABA.lng + '&travelmode=walking';
     updateFace();
@@ -188,7 +188,7 @@
 
   function startLive() {
     state.live = true;
-    updateCompassStatus('Live compass on — turn until the Kaaba reaches the gold notch.');
+    updateCompassStatus('Live compass on. Turn until the Kaaba reaches the gold notch.');
     state.timer = setTimeout(function () {
       if (state.smooth === null) {
         state.live = false;
@@ -216,7 +216,7 @@
     if (!navigator.geolocation) return; // compass status already explains the situation
     updateCompassStatus('Getting your location…');
     // Try precise GPS first; if it can't get a fix (common indoors), fall back to
-    // fast network-based positioning — plenty accurate for a Qibla bearing.
+    // fast network-based positioning, plenty accurate for a Qibla bearing.
     var attempts = [
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
       { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 }
@@ -229,12 +229,12 @@
       if (hit) citySelect.value = hit.city.slug;
       el('btn-retry').style.display = 'none';
       render();
-      updateCompassStatus('Location found — turn until the Kaaba reaches the gold notch.');
+      updateCompassStatus('Location found. Turn until the Kaaba reaches the gold notch.');
     };
     var onError = function () {
       i++;
       if (i < attempts.length) {
-        updateCompassStatus('Weak GPS — trying approximate location…');
+        updateCompassStatus('Weak GPS signal. Trying approximate location…');
         navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
       } else {
         updateCompassStatus('Enable location for accurate Qibla — using ' + state.city.name + ' for now.', true);
@@ -249,13 +249,13 @@
     var canOrient = ('DeviceOrientationEvent' in window) || ('ondeviceorientation' in window);
     var canGeo = !!(navigator.geolocation);
     if (!canOrient && !canGeo) {
-      updateCompassStatus('No live compass here — this browser exposes neither a compass sensor nor location (common in in-app browsers). Your Qibla direction for the selected city is shown above.', true);
+      updateCompassStatus('No live compass here. This browser exposes neither a compass sensor nor location (common in in-app browsers). Your Qibla direction for the selected city is shown above.', true);
       el('compass-fallback').style.display = 'block';
       return;
     }
     btn.style.display = 'inline-block';
     updateCompassStatus(canOrient
-      ? 'Tap the button — we’ll use your location and compass to point you to the Qibla.'
+      ? 'Tap the button. We’ll use your location and compass to point you to the Qibla.'
       : 'Tap the button to use your exact location for the Qibla bearing.');
     btn.addEventListener('click', function () {
       btn.style.display = 'none';
@@ -269,7 +269,7 @@
         window.DeviceOrientationEvent.requestPermission().then(function (res) {
           if (res === 'granted') { startOrient(); }
           else {
-            updateCompassStatus('Compass permission was denied — showing your Qibla bearing instead.', true);
+            updateCompassStatus('Compass permission was denied. Showing your Qibla bearing instead.', true);
             el('compass-fallback').style.display = 'block';
           }
         }).catch(function () {
@@ -315,7 +315,7 @@
 <aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="Subscribe to The SalahTime Letter" aria-hidden="true">
   <button type="button" class="nl-close" aria-label="Close">×</button>
   <h3>The SalahTime Letter</h3>
-  <p>Your city's weekly prayer times, a duaa, and Hijri highlights — one thoughtful email every Friday.</p>
+  <p>Your city's weekly prayer times, a duaa, and Hijri highlights. One thoughtful email every Friday.</p>
   <form data-nl-form="slidein" novalidate>
     <div class="nl-form">
       <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
@@ -323,10 +323,10 @@
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">One more step — check your inbox.</p>
+    <p class="big">One more step: check your inbox.</p>
     <p>Click the confirmation link to activate your subscription.</p>
   </div>
-  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable — please try again later.</div>
+  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable. Please try again later.</div>
   <p class="nl-note">Free forever · Unsubscribe anytime</p>
 </aside>
 <script src="/assets/js/newsletter.js"></script>

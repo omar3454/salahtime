@@ -11,6 +11,9 @@
   --line: #e3ddd0;
   --card: #ffffff;
   --danger: #b3261e;
+  --blue: #2456a6;
+  --blue-dark: #1a4486;
+  --blue-soft: #e9effa;
   --radius: 14px;
   --shadow: 0 1px 4px rgba(29, 43, 38, 0.08);
 }
@@ -28,6 +31,9 @@ body {
   line-height: 1.6;
   font-size: 16px;
 }
+
+main a { color: var(--blue); }
+main a:hover { color: var(--blue-dark); }
 
 .container {
   width: 100%;
@@ -209,7 +215,7 @@ input[type="search"], input[type="text"], input[type="email"], select, textarea 
   max-width: 100%;
 }
 input:focus, select:focus, textarea:focus, button:focus {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--blue);
   outline-offset: 1px;
 }
 
@@ -624,3 +630,53 @@ input, select, textarea, button { font-family: inherit; }
 .thikr-arabic{font-size:1.5rem;line-height:2.1;text-align:center;margin:.5rem 0;direction:rtl}
 .thikr-body{padding:0 16px 14px}
 @media print{.athkar-progress,.thikr-check{display:none}.thikr-card{break-inside:avoid}}
+
+/* ---------- Duaa library: clean redesign ---------- */
+.lib-lede { font-size: 1.05rem; color: var(--ink-soft); max-width: 640px; line-height: 1.7; }
+
+.lib-cats { list-style: none; padding: 0; margin: 2rem 0; }
+.lib-cats li { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.lib-cats li:last-child { border-bottom: 0; }
+.lib-cats .cat-name { font-size: 1.2rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+.lib-cats .cat-name:hover { color: var(--blue); }
+.lib-cats .cat-desc { color: var(--ink-soft); margin: 0.3rem 0 0.15rem; }
+.lib-cats .cat-count { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
+
+.lib-list { list-style: none; padding: 0; margin: 1.75rem 0; }
+.lib-list li { padding: 0.9rem 0; border-bottom: 1px solid var(--line); }
+.lib-list li:last-child { border-bottom: 0; }
+.lib-list .dua-link { font-weight: 600; color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+.lib-list .dua-link:hover { color: var(--blue); }
+.lib-list .dua-desc { color: var(--ink-soft); margin: 0.2rem 0 0; font-size: 0.95rem; }
+.lib-list .dua-meta-line { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.15rem; }
+
+.kicker { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--blue); margin: 0 0 0.4rem; }
+.kicker a { color: var(--blue); text-decoration: none; }
+.kicker a:hover { text-decoration: underline; }
+
+.dua-head { margin: 2.2rem 0 1.2rem; }
+.dua-head h1 { margin: 0 0 0.35rem; font-size: 1.7rem; line-height: 1.3; }
+.dua-source { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+
+.dua-arabic-block { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 1.5rem; margin: 1.5rem 0; box-shadow: var(--shadow); }
+.dua-arabic { font-size: 1.9rem; line-height: 2.25; text-align: center; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, "Noto Naskh Arabic", "Traditional Arabic", serif; }
+
+.dua-expand { border: none; border-bottom: 1px solid var(--line); border-radius: 0; margin: 0; background: transparent; }
+.dua-expand summary { cursor: pointer; padding: 13px 2px; font-weight: 600; color: var(--blue); list-style: none; display: flex; align-items: center; gap: 8px; font-size: 0.98rem; }
+.dua-expand summary::-webkit-details-marker { display: none; }
+.dua-expand summary::before { content: "›"; color: var(--blue); font-weight: 700; font-size: 1.2rem; line-height: 1; transition: transform 0.2s; }
+.dua-expand[open] summary::before { transform: rotate(90deg); }
+.dua-expand .dua-expand-body { padding: 2px 2px 14px; }
+.dua-expand .dua-expand-body p { margin: 0.5rem 0; }
+
+.dua-sec { margin: 1.6rem 0; border-inline-start: 3px solid var(--blue-soft); padding-inline-start: 1rem; }
+.dua-sec h2 { font-size: 1.02rem; margin: 0 0 0.35rem; color: var(--ink); }
+.dua-sec p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
+
+.dua-repeat { display: inline-block; font-size: 0.85rem; color: var(--blue); font-weight: 600; margin-top: 0.2rem; }
+
+@media print {
+  .dua-arabic-block { box-shadow: none; }
+  .dua-expand { border-bottom: 1px solid #ccc; }
+}
+.dua-arabic-block .dua-arabic { margin: 0; }

@@ -80,7 +80,7 @@
   </section>
   <section class="card">
     <h2>Duaa Library</h2>
-    <p>Authentic supplications for every moment — morning and evening, hardship, travel, and after prayer — with Arabic text, transliteration, and simple explanations.</p>
+    <p>Authentic supplications for every moment of the day: morning and evening, hardship, travel, after prayer. Each one comes with Arabic text, transliteration, and a simple explanation.</p>
     <p><a class="btn btn-primary" href="/duas/">Browse the library</a></p>
   </section>
 </div>
@@ -112,7 +112,7 @@
     <li><span class="tick">✓</span> Weekly prayer times for your city</li>
     <li><span class="tick">✓</span> Duaa of the week, with meaning</li>
     <li><span class="tick">✓</span> Hijri dates &amp; occasion reminders</li>
-    <li><span class="tick">✓</span> One short reflection — no spam, ever</li>
+    <li><span class="tick">✓</span> One short reflection. No spam, ever.</li>
   </ul>
   <form data-nl-form="homepage" novalidate>
     <div class="nl-form">
@@ -124,18 +124,18 @@
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">One more step — check your inbox.</p>
+    <p class="big">One more step: check your inbox.</p>
     <p>Click the confirmation link we just emailed you to activate your subscription.</p>
   </div>
-  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable — please try again later.</div>
+  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable. Please try again later.</div>
   <p class="nl-note">Free forever. Unsubscribe in one click. <a href="/newsletter.html">Learn more →</a></p>
 </section>
 
 <section class="card seo-copy">
   <h2>Accurate prayer times, calculated for where you are</h2>
-  <p>SalahTime gives you precise daily prayer times for 144 cities across the Muslim world — from Cairo, Mecca and Medina to Jakarta, Karachi, Istanbul, London and New York. Every schedule is computed in your browser using established astronomical formulas: the sun's declination and the equation of time determine Fajr at dawn, Dhuhr at solar noon, Asr by shadow length, Maghrib at sunset, and Isha after twilight.</p>
+  <p>SalahTime gives you precise daily prayer times for 144 cities across the Muslim world, from Cairo, Mecca and Medina to Jakarta, Karachi, Istanbul, London and New York. Every schedule is computed in your browser using established astronomical formulas. the sun's declination and the equation of time determine Fajr at dawn, Dhuhr at solar noon, Asr by shadow length, Maghrib at sunset, and Isha after twilight.</p>
   <p>You can switch between eleven calculation methods used by religious authorities worldwide, including the Egyptian General Authority of Survey, the Muslim World League, Umm al-Qura of Makkah, ISNA, Karachi, Indonesia's Kemenag, Malaysia's JAKIM, Morocco, Jordan, Diyanet of Turkey and the UOIF of France. Choose Standard or Hanafi Asr to match your school of thought.</p>
-  <p>Our engine has been verified against the Aladhan API with a worst deviation of just 2 minutes across 23 city, date and method checks. Times are shown in your city's local time zone, work offline once loaded, and are completely free — no account, no signup, no tracking of your own.</p>
+  <p>Our engine has been verified against the Aladhan API with a worst deviation of just 2 minutes across 23 city, date and method checks. Times are shown in your city's local time zone, work offline once loaded, and are completely free. No account, no signup, no tracking.</p>
 </section>
 
 <!-- ADSENSE: sidebar/bottom -->
@@ -145,7 +145,7 @@
   <h2>Frequently asked questions</h2>
   <details>
     <summary>How accurate are the prayer times?</summary>
-    <p>Times are calculated with standard solar-position astronomy and verified against the Aladhan API — the worst deviation found was 2 minutes across 23 city/date/method checks. Still, please confirm with your local mosque, as mosques may add small precautionary offsets.</p>
+    <p>Times are calculated with standard solar-position astronomy and verified against the Aladhan API. The worst deviation found was 2 minutes across 23 city/date/method checks. Still, please confirm with your local mosque, as mosques may add small precautionary offsets.</p>
   </details>
   <details>
     <summary>Which calculation method should I choose?</summary>
@@ -157,7 +157,7 @@
   </details>
   <details>
     <summary>Is SalahTime free?</summary>
-    <p>Yes — completely free, with no account and no signup. The site is supported by advertising.</p>
+    <p>Yes. Completely free, with no account and no signup. The site is supported by advertising.</p>
   </details>
   <details>
     <summary>How are the times calculated?</summary>
@@ -361,7 +361,7 @@
       state.asr = asrSelect.value; renderTimes(); persist();
     });
     el('btn-geo').addEventListener('click', function () {
-      if (!navigator.geolocation) { timesNote.textContent = 'Geolocation is not supported by this browser — please choose a city from the list.'; timesNote.className = 'alert error'; return; }
+      if (!navigator.geolocation) { timesNote.textContent = 'Geolocation is not supported by this browser. Please choose a city from the list.'; timesNote.className = 'alert error'; return; }
       el('btn-geo').disabled = true;
       navigator.geolocation.getCurrentPosition(function (pos) {
         el('btn-geo').disabled = false;
@@ -374,7 +374,7 @@
         timesNote.className = 'alert';
       }, function () {
         el('btn-geo').disabled = false;
-        timesNote.textContent = 'Location unavailable — please choose a city from the list.';
+        timesNote.textContent = 'Location unavailable. Please choose a city from the list.';
         timesNote.className = 'alert error';
       }, { timeout: 10000 });
     });
@@ -394,7 +394,7 @@
 <aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="Subscribe to The SalahTime Letter" aria-hidden="true">
   <button type="button" class="nl-close" aria-label="Close">×</button>
   <h3>The SalahTime Letter</h3>
-  <p>Your city's weekly prayer times, a duaa, and Hijri highlights — one thoughtful email every Friday.</p>
+  <p>Your city's weekly prayer times, a duaa, and Hijri highlights. One thoughtful email every Friday.</p>
   <form data-nl-form="slidein" novalidate>
     <div class="nl-form">
       <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
@@ -402,10 +402,10 @@
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">One more step — check your inbox.</p>
+    <p class="big">One more step: check your inbox.</p>
     <p>Click the confirmation link to activate your subscription.</p>
   </div>
-  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable — please try again later.</div>
+  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable. Please try again later.</div>
   <p class="nl-note">Free forever · Unsubscribe anytime</p>
 </aside>
 <script src="/assets/js/newsletter.js"></script>
