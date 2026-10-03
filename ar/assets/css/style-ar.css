@@ -595,3 +595,32 @@ input, select, textarea, button { font-family: inherit; }
 #compass-fallback .alert { background: rgba(201,162,39,0.12); border: 1px solid rgba(201,162,39,0.4); color: #f7f0dc; }
 #compass-fallback ol { color: rgba(242,238,225,0.85); }
 #compass-fallback .small { color: rgba(242,238,225,0.6); }
+
+/* ---------- Expandable dua sections ---------- */
+.dua-expand{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff}
+.dua-expand summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--emerald-dark);list-style:none;display:flex;align-items:center;gap:8px}
+.dua-expand summary::-webkit-details-marker{display:none}
+.dua-expand summary::before{content:"+";color:#fff;background:var(--gold);font-weight:800;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.dua-expand[open] summary::before{content:"−"}
+.dua-expand .dua-expand-body{padding:4px 16px 14px}
+.dua-expand .dua-expand-body p{margin:0.5rem 0}
+
+/* ---------- Repetition badge ---------- */
+.rep-badge{display:inline-block;background:var(--gold-soft);color:var(--emerald-dark);border:1px solid var(--gold);border-radius:999px;padding:.25rem .9rem;font-weight:700;font-size:.85rem;margin:0 .5rem .5rem 0}
+
+/* ---------- Athkar collection ---------- */
+.athkar-progress{position:sticky;top:0;background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:1rem 0;z-index:5}
+.athkar-progress .bar{height:10px;background:#e8e2d2;border-radius:999px;overflow:hidden;margin-top:8px}
+.athkar-progress .bar-fill{height:100%;background:linear-gradient(90deg,var(--emerald),var(--gold));border-radius:999px;transition:width .4s ease;width:0%}
+.thikr-card{border:1px solid var(--line);border-radius:12px;margin:12px 0;background:#fff;overflow:hidden;transition:opacity .3s}
+.thikr-card.done{opacity:.55}
+.thikr-head{display:flex;align-items:flex-start;gap:12px;padding:14px 16px}
+.thikr-check{width:30px;height:30px;border:2px solid var(--gold);border-radius:50%;flex-shrink:0;margin-top:2px;cursor:pointer;background:#fff;position:relative;transition:background .2s}
+.thikr-card.done .thikr-check{background:var(--emerald);border-color:var(--emerald)}
+.thikr-card.done .thikr-check::after{content:"✓";color:#fff;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:800;font-size:16px}
+.thikr-info{flex:1;min-width:0}
+.thikr-num{font-size:.8rem;color:var(--ink-soft);font-weight:700}
+.thikr-title{font-weight:800;color:var(--emerald-dark);margin:2px 0 6px;font-size:1.05rem}
+.thikr-arabic{font-size:1.5rem;line-height:2.1;text-align:center;margin:.5rem 0;direction:rtl}
+.thikr-body{padding:0 16px 14px}
+@media print{.athkar-progress,.thikr-check{display:none}.thikr-card{break-inside:avoid}}
