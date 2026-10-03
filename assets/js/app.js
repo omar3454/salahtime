@@ -79,20 +79,21 @@
 
   // Walk gregorian days to find the first/last gregorian date of the islamic
   // month containing `date`. Returns {first: Date, last: Date, year, month}.
+  // Steps whole calendar days at local noon (NOT fixed 86400000ms): fixed-ms
+  // stepping drifts across DST changes and can misplace month boundaries.
   function hijriMonthSpan(date) {
     var cur = getIslamicParts(date);
     if (!cur) return null;
     var first = new Date(date), last = new Date(date), d, p;
-    d = new Date(date);
-    for (var i = 0; i < 32; i++) {
-      d = new Date(d.getTime() - 86400000);
+    var y0 = date.getFullYear(), m0 = date.getMonth(), d0 = date.getDate();
+    for (var i = 1; i <= 32; i++) {
+      d = new Date(y0, m0, d0 - i, 12);
       p = getIslamicParts(d);
       if (!p || p.month !== cur.month || p.year !== cur.year) break;
       first = new Date(d);
     }
-    d = new Date(date);
-    for (var j = 0; j < 32; j++) {
-      d = new Date(d.getTime() + 86400000);
+    for (var j = 1; j <= 32; j++) {
+      d = new Date(y0, m0, d0 + j, 12);
       p = getIslamicParts(d);
       if (!p || p.month !== cur.month || p.year !== cur.year) break;
       last = new Date(d);
@@ -101,12 +102,16 @@
   }
 
   // Next occurrence of islamic (month, day) on/after today. Self-contained: no hardcoded dates.
+  // Steps whole calendar days (NOT fixed 86400000ms): fixed-ms stepping drifts
+  // across DST changes, which split the probed Islamic day from the returned
+  // Gregorian date (e.g. Ramadan 1448 was labelled Feb 7 instead of Feb 8, 2027).
   function findNextIslamic(month, day) {
     if (!ISLAMIC_FMT) return null;
-    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var base = new Date(); base.setHours(0, 0, 0, 0);
     for (var i = 0; i < 500; i++) {
-      var d = new Date(today.getTime() + i * 86400000);
-      var p = getIslamicParts(new Date(d.getTime() + 12 * 3600000)); // noon: DST-safe
+      var d = new Date(base.getFullYear(), base.getMonth(), base.getDate() + i);
+      var noon = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12, 0, 0, 0);
+      var p = getIslamicParts(noon); // noon: unambiguous Islamic day, DST-safe
       if (p && p.month === month && p.day === day) {
         return { date: d, daysAway: i, hijriYear: p.year };
       }

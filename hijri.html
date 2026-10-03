@@ -88,7 +88,11 @@
       var e = document.createElement('div'); e.className = 'day empty'; grid.appendChild(e);
     }
     var todayKey = new Date().toDateString();
-    for (var t = span.first.getTime(); t <= span.last.getTime(); t += 86400000) {
+    // Calendar-day iteration (NOT fixed 86400000ms): fixed-ms stepping drifts
+    // across DST changes and mislabels cells after the transition.
+    var gStart = new Date(span.first.getFullYear(), span.first.getMonth(), span.first.getDate());
+    var gEnd = new Date(span.last.getFullYear(), span.last.getMonth(), span.last.getDate());
+    for (var cd = new Date(gStart); cd <= gEnd; cd = new Date(cd.getFullYear(), cd.getMonth(), cd.getDate() + 1)) {
       (function (time) {
         var g = new Date(time);
         var p = App.getIslamicParts(new Date(time + 12 * 3600000));
@@ -100,7 +104,7 @@
         var greg = document.createElement('div'); greg.className = 'g'; greg.textContent = g.getDate();
         cell.appendChild(num); cell.appendChild(greg);
         grid.appendChild(cell);
-      })(t);
+      })(cd.getTime());
     }
     // keep viewed anchored for prev/next navigation
     viewed = new Date(span.first.getTime() + 12 * 3600000);
