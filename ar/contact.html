@@ -37,7 +37,7 @@
     <p><label>البريد الإلكتروني<br><input type="email" name="email" required style="width:100%;max-width:420px"></label></p>
     <p><label>الرسالة<br><textarea name="message" rows="6" required style="width:100%;max-width:420px"></textarea></label></p>
     <p><button type="submit" class="btn btn-primary">إرسال</button></p>
-    <p class="small muted">يفتح الإرسال تطبيق البريد الإلكتروني لديك والرسالة موجهة إلينا — لا يُرسل شيء تلقائيًا.</p>
+    <p class="small muted">يفتح الإرسال تطبيق البريد الإلكتروني لديك والرسالة موجهة إلينا. لا يُرسل شيء تلقائيًا.</p>
   </form>
 </section>
 </main>
@@ -47,7 +47,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   e.preventDefault();
   var f = e.target;
   var subject = encodeURIComponent('رسالة إلى SalahTime من ' + f.name.value);
-  var body = encodeURIComponent(f.message.value + '\n\n— ' + f.name.value + ' (' + f.email.value + ')');
+  var body = encodeURIComponent(f.message.value + '\n\n- ' + f.name.value + ' (' + f.email.value + ')');
   window.location.href = 'mailto:hello@getsalahtime.com?subject=' + subject + '&body=' + body;
 });
 </script>
@@ -55,7 +55,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
 <aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="اشترك في رسالة SalahTime" aria-hidden="true">
   <button type="button" class="nl-close" aria-label="إغلاق">×</button>
   <h3>رسالة SalahTime</h3>
-  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية — رسالة مدروسة كل يوم جمعة.</p>
+  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية. رسالة مدروسة كل يوم جمعة.</p>
   <form data-nl-form="slidein" novalidate>
     <div class="nl-form">
       <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
@@ -63,10 +63,10 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p class="big">خطوة واحدة أخيرة: تحقق من بريدك الوارد.</p>
     <p>انقر رابط التفعيل لتفعيل اشتراكك.</p>
   </div>
-  <div class="nl-soon" role="status">التسجيل في النشرة البريدية غير متاح مؤقتًا — حاول مرة أخرى لاحقًا.</div>
+  <div class="nl-soon" role="status">التسجيل في النشرة البريدية غير متاح مؤقتًا. حاول مرة أخرى لاحقًا.</div>
   <p class="nl-note">مجاني للأبد · إلغاء الاشتراك في أي وقت</p>
 </aside>
 <script src="/ar/assets/js/newsletter.js"></script>

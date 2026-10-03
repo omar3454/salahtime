@@ -31,7 +31,7 @@
 <section class="card seo-copy">
   <h2>How prayer times are calculated</h2>
   <p>Muslim prayer times are defined by the position of the sun, so they can be computed astronomically for any place and date. SalahTime uses the standard solar-declination and equation-of-time formulation: Fajr and Isha are set when the sun reaches a fixed angle below the horizon (twilight), Sunrise and Sunset at 0.833° below the horizon (accounting for refraction), Dhuhr at solar noon, and Asr when an object's shadow reaches a set multiple of its length. Maghrib is at sunset.</p>
-  <p>Different religious authorities use slightly different twilight angles and precautionary minute offsets — that is why prayer times differ between methods. SalahTime supports the eleven official methods below and automatically selects the right default for each city (for example, the Egyptian General Authority of Survey for Egypt). You can switch methods any time on the <a href="/">home page</a>.</p>
+  <p>Different religious authorities use slightly different twilight angles and precautionary minute offsets. That is why prayer times differ between methods. SalahTime supports the eleven official methods below and automatically selects the right default for each city (for example, the Egyptian General Authority of Survey for Egypt). You can switch methods any time on the <a href="/">home page</a>.</p>
 </section>
 
 <section class="card">
@@ -62,9 +62,9 @@
   <h2>High-latitude adjustment</h2>
   <p>In far northern or southern locations the sun may barely set in summer or barely rise in winter, making twilight-angle times extreme or undefined. SalahTime applies an <strong>angle-based adjustment</strong>: Fajr and Isha are limited to a proportion of the night (angle ÷ 60 × night length), the same approach used by major prayer-time APIs.</p>
   <h2>Imsak</h2>
-  <p><strong>Imsak</strong> — the time to stop eating before fasting — is shown as <strong>10 minutes before Fajr</strong> for all methods.</p>
+  <p><strong>Imsak</strong>, the time to stop eating before fasting, is shown as <strong>10 minutes before Fajr</strong> for all methods.</p>
   <h2>Accuracy</h2>
-  <p class="alert">Verified against the Aladhan API — worst deviation 2 minutes across 23 city/date/method checks (Cairo, Mecca, Riyadh, Jakarta, Kuala Lumpur, Istanbul, Karachi, Dhaka, New York, London, Casablanca, Amman, Paris, Lagos; methods Egypt, Makkah, Kemenag, Jakim, Turkey, Karachi, ISNA, Morocco, Jordan, France, MWL), checked 2026-09-24.</p>
+  <p class="alert">Verified against the Aladhan API. Worst deviation: 2 minutes across 23 city/date/method checks (Cairo, Mecca, Riyadh, Jakarta, Kuala Lumpur, Istanbul, Karachi, Dhaka, New York, London, Casablanca, Amman, Paris, Lagos; methods Egypt, Makkah, Kemenag, Jakim, Turkey, Karachi, ISNA, Morocco, Jordan, France, MWL), checked 2026-09-24.</p>
   <p>Calculation is only half the story: mosques often add small precautionary minutes, and local moon-sighting can shift Hijri dates by a day. When in doubt, please confirm with your local mosque.</p>
 </section>
 
@@ -77,7 +77,7 @@
 <aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="Subscribe to The SalahTime Letter" aria-hidden="true">
   <button type="button" class="nl-close" aria-label="Close">×</button>
   <h3>The SalahTime Letter</h3>
-  <p>Your city's weekly prayer times, a duaa, and Hijri highlights — one thoughtful email every Friday.</p>
+  <p>Your city's weekly prayer times, a duaa, and Hijri highlights. One thoughtful email every Friday.</p>
   <form data-nl-form="slidein" novalidate>
     <div class="nl-form">
       <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
@@ -85,10 +85,10 @@
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">One more step — check your inbox.</p>
+    <p class="big">One more step: check your inbox.</p>
     <p>Click the confirmation link to activate your subscription.</p>
   </div>
-  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable — please try again later.</div>
+  <div class="nl-soon" role="status">Newsletter signup is temporarily unavailable. Please try again later.</div>
   <p class="nl-note">Free forever · Unsubscribe anytime</p>
 </aside>
 <script src="/assets/js/newsletter.js"></script>

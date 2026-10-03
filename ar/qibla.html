@@ -33,7 +33,7 @@
 
 <section class="compass-card">
   <h2>محدد القبلة</h2>
-  <p class="compass-sub">القبلة هي اتجاه الكعبة في مكة الذي يستقبله المسلمون في الصلاة. اختر مدينتك — أو انقر <strong>فعّل البوصلة الحية</strong> لتوجيه البوصلة بموقعك الدقيق.</p>
+  <p class="compass-sub">القبلة هي اتجاه الكعبة في مكة الذي يستقبله المسلمون في الصلاة. اختر مدينتك، أو انقر <strong>فعّل البوصلة الحية</strong> لتوجيه البوصلة بموقعك الدقيق.</p>
   <div class="location-controls">
     <select id="city-select" aria-label="اختر مدينة"></select>
   </div>
@@ -63,7 +63,7 @@
       <text id="c-deg" x="160" y="158" text-anchor="middle" class="c-deg">—</text>
       <text id="c-label" x="160" y="184" text-anchor="middle" class="c-label">البوصلة متوقفة</text>
     </svg>
-    <div class="align-pill" id="align-pill">الشمال للأعلى — علامة الكعبة توضح اتجاه قبلتك</div>
+    <div class="align-pill" id="align-pill">الشمال للأعلى. علامة الكعبة توضح اتجاه قبلتك</div>
   </div>
   <div class="compass-actions">
     <button type="button" class="btn btn-gold" id="btn-compass" style="display:none">فعّل البوصلة الحية</button>
@@ -78,7 +78,7 @@
     <ol>
       <li>حدد الشمال بأي تطبيق بوصلة، أو بالشمس (تشرق من الشرق وتغرب من الغرب)، أو بمعلم تعرفه.</li>
       <li>أمسك الهاتف بحيث يشير حرف الشين على البوصلة إلى الشمال.</li>
-      <li>استقبل اتجاه علامة الكعبة — هذه قبلتك.</li>
+      <li>استقبل اتجاه علامة الكعبة. هذه قبلتك.</li>
     </ol>
     <p class="small">تلميح: المتصفحات داخل التطبيقات تحجب مستشعر البوصلة. افتح هذه الصفحة في سفاري أو كروم للبوصلة المباشرة.</p>
   </div>
@@ -149,7 +149,7 @@
       svg.classList.remove('aligned');
       kaaba.setAttribute('opacity', '0.9');
       pill.className = 'align-pill';
-      pill.textContent = 'الشمال للأعلى — علامة الكعبة توضح اتجاه قبلتك';
+      pill.textContent = 'الشمال للأعلى. علامة الكعبة توضح اتجاه قبلتك';
       return;
     }
     var rot = (state.bearing - state.smooth + 360) % 360;
@@ -177,7 +177,7 @@
     el('qibla-words').textContent = bearingToWords(state.bearing);
     qiblaDir.setAttribute('transform', 'rotate(' + state.bearing.toFixed(2) + ' 160 160)');
     el('fallback-direction').textContent = 'من ' + state.city.name + '، استقبل ' + bearingToWords(state.bearing) +
-      ' — ' + state.bearing.toFixed(1) + '° باتجاه عقارب الساعة من الشمال الحقيقي.';
+      ', ' + state.bearing.toFixed(1) + '° باتجاه عقارب الساعة من الشمال الحقيقي.';
     el('fallback-map').href = 'https://www.google.com/maps/dir/?api=1&origin=' + state.city.lat + ',' + state.city.lng +
       '&destination=' + KAABA.lat + ',' + KAABA.lng + '&travelmode=walking';
     updateFace();
@@ -191,7 +191,7 @@
 
   function startLive() {
     state.live = true;
-    updateCompassStatus('البوصلة المباشرة مفعّلة — استدر حتى تصل الكعبة إلى العلامة الذهبية.');
+    updateCompassStatus('البوصلة المباشرة مفعّلة. استدر حتى تصل الكعبة إلى العلامة الذهبية.');
     state.timer = setTimeout(function () {
       if (state.smooth === null) {
         state.live = false;
@@ -219,7 +219,7 @@
     if (!navigator.geolocation) return; // compass status already explains the situation
     updateCompassStatus('جارٍ تحديد موقعك…');
     // Try precise GPS first; if it can't get a fix (common indoors), fall back to
-    // fast network-based positioning — plenty accurate for a Qibla bearing.
+    // fast network-based positioning, plenty accurate for a Qibla bearing.
     var attempts = [
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
       { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 }
@@ -232,12 +232,12 @@
       if (hit) citySelect.value = hit.city.slug;
       el('btn-retry').style.display = 'none';
       render();
-      updateCompassStatus('تم تحديد الموقع — استدر حتى تصل الكعبة إلى العلامة الذهبية.');
+      updateCompassStatus('تم تحديد الموقع. استدر حتى تصل الكعبة إلى العلامة الذهبية.');
     };
     var onError = function () {
       i++;
       if (i < attempts.length) {
-        updateCompassStatus('إشارة ضعيفة — جارٍ تحديد الموقع التقريبي…');
+        updateCompassStatus('إشارة ضعيفة. جارٍ تحديد الموقع التقريبي…');
         navigator.geolocation.getCurrentPosition(onSuccess, onError, attempts[i]);
       } else {
         updateCompassStatus('فعّل الموقع لقبلة دقيقة — نستخدم ' + state.city.name + ' مؤقتًا.', true);
@@ -252,13 +252,13 @@
     var canOrient = ('DeviceOrientationEvent' in window) || ('ondeviceorientation' in window);
     var canGeo = !!(navigator.geolocation);
     if (!canOrient && !canGeo) {
-      updateCompassStatus('لا توجد بوصلة حية هنا — هذا المتصفح لا يوفر مستشعر بوصلة ولا الموقع (شائع في المتصفحات داخل التطبيقات). اتجاه قبلتك للمدينة المختارة موضح أعلاه.', true);
+      updateCompassStatus('لا توجد بوصلة حية هنا. هذا المتصفح لا يوفر مستشعر بوصلة ولا الموقع (شائع في المتصفحات داخل التطبيقات). اتجاه قبلتك للمدينة المختارة موضح أعلاه.', true);
       el('compass-fallback').style.display = 'block';
       return;
     }
     btn.style.display = 'inline-block';
     updateCompassStatus(canOrient
-      ? 'انقر الزر — سنستخدم موقعك والبوصلة لتوجيهك إلى القبلة.'
+      ? 'انقر الزر. سنستخدم موقعك والبوصلة لتوجيهك إلى القبلة.'
       : 'انقر الزر لاستخدام موقعك الدقيق لاتجاه القبلة.');
     btn.addEventListener('click', function () {
       btn.style.display = 'none';
@@ -272,7 +272,7 @@
         window.DeviceOrientationEvent.requestPermission().then(function (res) {
           if (res === 'granted') { startOrient(); }
           else {
-            updateCompassStatus('تم رفض إذن البوصلة — سنعرض اتجاه قبلتك بدلًا من ذلك.', true);
+            updateCompassStatus('تم رفض إذن البوصلة. سنعرض اتجاه قبلتك بدلًا من ذلك.', true);
             el('compass-fallback').style.display = 'block';
           }
         }).catch(function () {
@@ -318,7 +318,7 @@
 <aside class="nl-slidein" id="nl-slidein" role="dialog" aria-label="اشترك في رسالة SalahTime" aria-hidden="true">
   <button type="button" class="nl-close" aria-label="إغلاق">×</button>
   <h3>رسالة SalahTime</h3>
-  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية — رسالة مدروسة كل يوم جمعة.</p>
+  <p>مواقيت الصلاة الأسبوعية لمدينتك، ودعاء، وأبرز الأحداث الهجرية. رسالة مدروسة كل يوم جمعة.</p>
   <form data-nl-form="slidein" novalidate>
     <div class="nl-form">
       <input type="email" name="email" placeholder="you@example.com" aria-label="البريد الإلكتروني" required autocomplete="email">
@@ -326,10 +326,10 @@
     </div>
   </form>
   <div class="nl-done" role="status">
-    <p class="big">خطوة واحدة أخيرة — تحقق من بريدك الوارد.</p>
+    <p class="big">خطوة واحدة أخيرة: تحقق من بريدك الوارد.</p>
     <p>انقر رابط التفعيل لتفعيل اشتراكك.</p>
   </div>
-  <div class="nl-soon" role="status">التسجيل في النشرة البريدية غير متاح مؤقتًا — حاول مرة أخرى لاحقًا.</div>
+  <div class="nl-soon" role="status">التسجيل في النشرة البريدية غير متاح مؤقتًا. حاول مرة أخرى لاحقًا.</div>
   <p class="nl-note">مجاني للأبد · إلغاء الاشتراك في أي وقت</p>
 </aside>
 <script src="/ar/assets/js/newsletter.js"></script>
