@@ -666,3 +666,7 @@ table.data tbody tr:nth-child(even) td { background: #fffdf7; }
   .dua-expand { border-bottom: 1px solid #ccc; }
 }
 .dua-arabic-block .dua-arabic { margin: 0; }
+
+/* Google Preferred Sources button — inline with footer nav links */
+.pref-source-wrap { display: inline-flex; align-items: center; }
+.pref-source-wrap [google-add-preferred-source-btn] { display: inline-flex; }
